@@ -1,0 +1,13 @@
+<h1><%= @trade %></h1>
+
+<h3>You have requested to trade the following book(s):</h3>
+<% @trade.sender_hash.each do |slug, num| %>
+		<%= [num, 'x  ', slug].join %><br>
+<% end %><br>
+
+<h3>For <%= @trade.recipient.name %>'s:</h3>
+<% @trade.recipient_hash.each do |slug, num| %>
+	<%= [num, 'x  ', slug].join %><br>
+<% end %><br>
+
+<%= link_to 'Back', users_path %>

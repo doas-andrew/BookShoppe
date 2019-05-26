@@ -1,0 +1,14 @@
+<h1><%= @user.name %>'s Trades</h1><hr>
+
+<h3>Outgoing Trade Requests</h3>
+<% @user.out_trades.each do |trade| %>
+	<font size='5'><%= link_to [trade.created_at.strftime('%D'), ' - Trade with ', trade.recipient.name].join	, trade_path(trade) %></font>
+<% end %><br>&nbsp<hr>
+
+<h3>Incoming Trade requests</h3>
+<% @user.inc_trades.each do |trade| %>
+	<%= trade.sender.name %> has requested to trade:
+	<br><br>
+	for your: <%= trade.recipient_tb %>
+	<hr>
+<% end %><hr>

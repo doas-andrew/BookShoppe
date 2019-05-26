@@ -1,0 +1,2 @@
+class TradeBooksController < ApplicationController
+end
