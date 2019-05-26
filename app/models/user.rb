@@ -10,6 +10,10 @@ class User < ApplicationRecord
 		Trade.all.select {|t| t.sender == self }
 	end
 
+	def completed_trades
+		Trade.all.select {|t| (t.sender == self || t.recipient == self) &&  t.status == 'completed'}
+	end
+
 	def inventory
 		h = {}
 		self.books.each { |book|

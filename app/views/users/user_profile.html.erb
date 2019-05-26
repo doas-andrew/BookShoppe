@@ -1,0 +1,22 @@
+<style type="text/css">
+	img {
+		max-width:20%;
+		max-height:20%;
+		float: left;
+	}
+</style>
+
+<img src="<%= @user.img_url %>">
+<div align="center">
+	<h1>Viewing <%= @user.name %>'s profile</h1>
+	<h3><%= @user.name %>'s books:</h3>
+	<% @user.inventory.each do |slug, num| %>
+		<%= num %>x <%= slug %><br>
+	<% end %><br>
+
+	<% if @user.id != session[:current_user_id] %>
+		<%= link_to 'Request a trade with this user.', new_trade_path %>
+	<% end %>
+</div>
+
+

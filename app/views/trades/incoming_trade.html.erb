@@ -1,0 +1,15 @@
+<h1><%= @trade.created_at.strftime('%D') %> - Trade with <%= link_to @trade.sender.name, user_path(@trade.sender) %></h1>
+
+<h3><%= @trade.sender.name %> has requested to trade the following book(s):</h3>
+<% @trade.sender_hash.each do |slug, num| %>
+		<%= [num, 'x ', slug].join %><br>
+<% end %><br>
+
+<h3>For your:</h3>
+<% @trade.recipient_hash.each do |slug, num| %>
+	<%= [num, 'x ', slug].join %><br>
+<% end %><br>
+
+<%= link_to 'Accept', accept_trade_path, confirm: "Are you sure you want to accept this trade? Your shipping address will be sent to #{@trade.sender.name}." %><br>
+<%= link_to 'Decline', trade_path, method: :delete, confirm: "Are you sure you want to decline this trade?" %><br>
+<%= link_to 'Back', users_path %>
