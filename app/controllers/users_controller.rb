@@ -14,21 +14,23 @@ class UsersController < ApplicationController
 	end
 
 	def new
-    end
+		@user = User.new
+  end
 
-    def create
-        User.create(first_name: params[:first_name],
-                       last_name: params[:last_name],
-                       email: params[:email],
-                       password: params[:password],
-					   password_confirmation: params[:password_confirmation],
-					   phone_number: params[:phone_number],
-					   address: params[:address],
-					   image_url: params[:image_url])
-		redirect_to :root
+  def create
+    @user = User.new(create_user_params)
+     if @user.save
+			redirect_to users_path
+		else
+			render 'new'
+		end
 	end
 
 	private
+
+	def create_user_params
+		params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :phone_number, :address)
+	end
 
 	def set_user
 		@user = User.find(params[:id])

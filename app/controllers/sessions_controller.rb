@@ -3,14 +3,15 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(email: params[:email].downcase)
-    if user && user.authenticate(params[:password])
-      log_in(user)
+    @user = User.find_by(email: params[:email].downcase)
+    byebug
+    @error = false
+    if @user && @user.authenticate(params[:password])
+      log_in(@user)
       redirect_to :root
-    else 
-      flash[:alert] = "Email Adress or Password is incorrect"
+    else
+      @error = true
       render 'new'
-
     end
   end
   

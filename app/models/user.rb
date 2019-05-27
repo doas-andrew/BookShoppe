@@ -1,18 +1,34 @@
 class User < ApplicationRecord
+	
+	has_secure_password
+
 	has_many :user_books
 	has_many :books, through: :user_books
 
-	VALID_EMAIL_REGEX = /\A([\w+\-]\.?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
-	has_secure_password
-    before_save { self.email = email.downcase }
-    validates :first_name, presence: true, length: {maximum: 50}
-    validates :last_name, presence: true, length: {maximum: 50}
-    validates :email, presence: true, length: {maximum: 225},
-                      format: {with: VALID_EMAIL_REGEX},
-                      uniqueness: {case_sensitive: false}
+	EMAIL_REGEX = /\A([\w+\-]\.?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
+	PHONE_REGEX = /\d{3}[-.\ ]\d{3}[-.\ ]\d{4}|\d{10}/
 
+  before_save { #self.email      = self.email.downcase,
+  							self.first_name = self.first_name.capitalize,
+  							self.last_name  = self.last_name.capitalize
+  						}
+
+  validates :first_name, { presence: true,
+  												 length: {maximum: 50}
+  											 }
+  validates :last_name, { presence: true,
+    											length: {maximum: 50}
+    										}
+  validates :phone_number, { presence: true,
+    												 format: {with: PHONE_REGEX}
+    											 }
+  validates :email, { presence: true,
+    									length: {maximum: 50},
+                     	format: {with: EMAIL_REGEX},
+                      uniqueness: {case_sensitive: false}
+                    }
 	def to_s
-		first_name + " " + last_name
+		first_name+' '+last_name
 	end
 
 	def inc_trades
