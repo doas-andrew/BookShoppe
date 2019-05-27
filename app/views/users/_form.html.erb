@@ -1,0 +1,25 @@
+<h1><%= @header_msg %></h1>
+
+
+
+
+<%= form_tag users_path do %>
+First Name:
+<input type="text" name="first_name"><br><br>
+Last Name:
+<input type="text" name="last_name"><br><br>
+Email Address:
+<input type="email" name="email"><br><br>
+Password:
+<input type="password" name="password"><br><br>
+Repeat Password:
+<input type="password" name="password_confirmation"><br><br>
+Phone Number:
+<input type="tel" name="phone_number"><br><br>
+Address:
+<input type="text" name="address"><br><br>
+Image URL:
+<input type="image" name="image_url"><br><br>
+
+<input type="submit" value="Submit">
+<%end%>

@@ -1,0 +1,8 @@
+<h1>Users</h1>
+
+<% @users.each do |u| %>
+<li><%= u.to_s %></li>
+<%end%>
+<% if user_signed_in? %>
+<ul>Hello! <%= current_user.to_s%></ul>
+<%end%>
