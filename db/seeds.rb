@@ -16,10 +16,4 @@ Book.create(title: 'Lonesome Dove', author: 'Larry McMurtry')
 Book.create(title: 'In Search of Lost Time', author: 'Marcel Proust')
 Book.create(title: 'Don Quixote', author: 'Miguel de Cervantes')
 
-User.create(name: 'Andrew', img_url: 'https://i.imgur.com/aO27nat.jpg').user_books.create(book: Book.all[0])
-User.create(name: 'Scott').user_books.create(book: Book.all[1])
-User.create(name: 'Jae').user_books << [UserBook.create(book: Book.all[2]), UserBook.create(book: Book.all[3]), UserBook.create(book: Book.all[3])]
-
-Trade.create(status: 'pending', sender: User.all[0], recipient: User.all[1]).trade_books << [TradeBook.create(user_book: UserBook.all[0]), TradeBook.create(user_book: UserBook.all[1])]
-Trade.create(status: 'pending', sender: User.all[2], recipient: User.all[0]).trade_books << [TradeBook.create(user_book: UserBook.all[0]),TradeBook.create(user_book: UserBook.all[3]),TradeBook.create(user_book: UserBook.all[4])]
-
+User.create(first_name: 'Andrew', last_name: 'Allen', password: '123', password_confirmation: '123', phone_number: '1234567890', address: '[address here]', email: '2@2.w',  image_url: 'app/assets/images/default_profile_image.jpg').user_books.create(book: Book.all[0])

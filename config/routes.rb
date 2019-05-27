@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
+
   resources :user_books
   resources :trade_books
   resources :trades
   resources :books
   resources :users
 
+  # get 'sessions/new'
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'

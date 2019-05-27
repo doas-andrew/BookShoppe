@@ -1,25 +1,33 @@
 <h1><%= @header_msg %></h1>
 
+<ul>
+  <% @user.errors.full_messages.each do |error| %>
+    <li style="color: red;"><%= error %></li>
+  <% end %>
+</ul>
 
+<%= form_for(@user) do |f| %>
 
+	First name<br>
+	<%= f.text_field :first_name %><br><br>
 
-<%= form_tag users_path do %>
-First Name:
-<input type="text" name="first_name"><br><br>
-Last Name:
-<input type="text" name="last_name"><br><br>
-Email Address:
-<input type="email" name="email"><br><br>
-Password:
-<input type="password" name="password"><br><br>
-Repeat Password:
-<input type="password" name="password_confirmation"><br><br>
-Phone Number:
-<input type="tel" name="phone_number"><br><br>
-Address:
-<input type="text" name="address"><br><br>
-Image URL:
-<input type="image" name="image_url"><br><br>
+	Last name<br>
+	<%= f.text_field :last_name %><br><br>
 
-<input type="submit" value="Submit">
-<%end%>
+	Email Address<br>
+	<%= f.text_field :email %><br><br>
+
+	Password<br>
+	<%= f.password_field :password %><br><br>
+
+	Confirm password<br>
+	<%= f.password_field :password_confirmation %><br><br>
+
+	Phone number<br>
+	<%= f.text_field :phone_number %><br><br>
+
+	Address<br>
+	<%= f.text_field :address %><br><br>
+
+	<%= f.submit @button_msg %>
+<% end %>
