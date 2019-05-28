@@ -1,0 +1,25 @@
+<h1>Book Search</h1>
+
+<% if params[:search] == '' %>
+	<font size="3">These are all the books in our system</font><hr>
+	<% @books.each do |book| %>
+		<h3><%= link_to book.slug, books_path+"?search=#{book.title}" %><br></h3>
+		<font size="3"><%= user_search_count(book.users.uniq.count) %></font>
+	<% end %>
+
+<% elsif @book %>
+	<br><hr>
+	<h3><%= @book.slug %></h3>
+	<font size="3"><%= user_search_count(@book.users.uniq.count) %>:</font>
+
+	<% @book.users.each do |user| %>
+		<h3><%= link_to user.full_name, user_path(user) %></h3>
+	<% end %>
+
+<% elsif @author %>
+	
+
+<% else %>
+	<font size="3">We couldn't find a book in our system based on your search criteria.</font><hr>
+
+<% end %>

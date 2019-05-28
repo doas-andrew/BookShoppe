@@ -1,23 +1,43 @@
 <style type="text/css">
-	img#profile_image {
-		max-width:20%;
-		max-height:20%;
+
+	#profile_page {
+		margin-left: 20%;
+		margin-right: 20%;
+
+		background-color: #D6DDE1;
+	}
+
+	#user_card {
+		max-width:30%;
+		max-height:30%;
 		float: left;
+		text-align: center;
+	}
+
+	#avatar {
+		max-width:100%;
+		max-height:100%;
 	}
 </style>
 
-<h1><%= link_to "Edit My Profile", edit_user_path%></h1>
-<div align="center">
-<ul>
-		<%= image_tag(@user.image.url, alt: 'Image') if @user.image? %>
-</ul>
-	<h1>Viewing <%= @user.first_name %>'s profile</h1>
-	<h3><%= @user.first_name %>'s books:</h3>
-	<% @user.inventory.each do |slug, num| %>
-		<%= num %>x <%= slug %><br>
-	<% end %><br>
+<div id="profile_page">
+	<div id="user_card">
+		<h1><%= @user.full_name %></h1>
+		<% if @user.avatar.url == nil %>
+			<img id="avatar" src="https://i.imgur.com/aO27nat.jpg">
+		<% end %>
+		<img id="avatar" src="<%= @user.avatar.url %>">
+		<font size="5"><%= link_to "Edit my profile", edit_user_path if @user == current_user%></font>
+	</div>
 
-	<% if @user.id != current_user.id %>
-		<%= link_to 'Propose a trade with this user.', new_trade_path %>
-	<% end %>
+	<div align="center">
+		<br>
+		<h2><%= @user.first_name %>'s books</h2>
+		<font size="3">
+			<% @user.inventory.each do |slug, num| %>
+				<%= num %>x <%= slug %><br>
+			<% end %><br>
+			<%= link_to 'Propose a trade with this user.', new_trade_path if @user != current_user %>
+		</font>
+	</div>
 </div>

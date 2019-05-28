@@ -10,11 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_24_200851) do
+ActiveRecord::Schema.define(version: 2019_05_28_161159) do
+
+  create_table "authors", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "books", force: :cascade do |t|
     t.string "title"
-    t.string "author"
+    t.integer "author_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -48,8 +54,7 @@ ActiveRecord::Schema.define(version: 2019_05_24_200851) do
     t.string "password_digest"
     t.string "phone_number"
     t.string "address"
-    t.string "avatar_url"
-    t.string "image"
+    t.string "avatar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

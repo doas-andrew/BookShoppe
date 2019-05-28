@@ -1,20 +1,35 @@
+<style type="text/css">
+  button#search_button {
+    border: none;
+    outline: none;
+  }
+</style>
+
 <div class="ui secondary menu">
   <%= link_to 'Home', root_path, class: 'item' %>
+
   <% if user_signed_in? %>
     <%= link_to 'Profile', user_path(current_user), class: 'item' %>
   <% end %>
+
   <div class="right menu">
-    <div class="item">
-      <div class="ui icon input">
-        <input type="text" placeholder="Search">
-        <i class="search link icon"></i>
+
+    <form method="GET" action="<%= books_path %>">
+      <div class="item">
+        <div class="ui icon input">
+          <input type="text" name="search" placeholder="Find a book">
+          <button type="submit" id="search_button"><i class="search link icon"></i></button>
+        </div>
       </div>
-    </div>
+    </form>
+
     <% if user_signed_in? %>
       <%= link_to "Log out", logout_path, method: :delete, class: 'ui item active' %>
     <% else %>
       <%= link_to "Log in", login_path, class: 'ui item active' %>
       <%= link_to "Sign up", new_user_path, class: 'ui item active' %><br><br>
+
     <% end %>
   </div>
 </div>
+<hr>
