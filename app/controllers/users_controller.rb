@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-	before_action :set_user, only: [:show, :show_trades]
+	before_action :set_user, only: [:show, :show_trades, :edit, :update]
 
 	def index
 		@users = User.all
@@ -27,10 +27,22 @@ class UsersController < ApplicationController
 		end
 	end
 
-	private
+	def edit
+	end
 
+	def update
+		if @user.update(create_user_params)
+            redirect_to user_path(@user)
+        else 
+            render :edit
+        end 
+	end
+
+
+
+	private
 	def create_user_params
-		params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :phone_number, :address)
+		params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :phone_number, :address, :image)
 	end
 
 	def set_user

@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2019_05_24_200851) do
     t.string "phone_number"
     t.string "address"
     t.string "avatar_url"
+    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
