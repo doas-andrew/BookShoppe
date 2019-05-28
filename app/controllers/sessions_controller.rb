@@ -1,4 +1,9 @@
 class SessionsController < ApplicationController
+
+  def index
+    render 'homepage'
+  end
+
   def new
   end
 
