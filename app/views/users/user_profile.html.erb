@@ -1,12 +1,12 @@
 <style type="text/css">
-	img {
+	img#profile_image {
 		max-width:20%;
 		max-height:20%;
 		float: left;
 	}
 </style>
 
-<img src="<%= @user.image_url %>">
+<img id="profile_image" src="<%= @user.avatar_url %>" alt="<%= @user.full_name %>">
 <div align="center">
 	<h1>Viewing <%= @user.first_name %>'s profile</h1>
 	<h3><%= @user.first_name %>'s books:</h3>
@@ -14,9 +14,7 @@
 		<%= num %>x <%= slug %><br>
 	<% end %><br>
 
-	<% if @user.id != session[:current_user_id] %>
-		<%= link_to 'Request a trade with this user.', new_trade_path %>
+	<% if @user.id != current_user.id %>
+		<%= link_to 'Propose a trade with this user.', new_trade_path %>
 	<% end %>
 </div>
-
-

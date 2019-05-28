@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2019_05_24_200851) do
     t.string "password_digest"
     t.string "phone_number"
     t.string "address"
-    t.string "image_url"
+    t.string "avatar_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

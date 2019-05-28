@@ -1,13 +1,8 @@
-<div class="ui secondary  menu">
-  <a class="item">
-    Home
-  </a>
-  <a class="item">
-    Messages
-  </a>
-  <a class="item">
-    Friends
-  </a>
+<div class="ui secondary menu">
+  <%= link_to 'Home', root_path, class: 'item' %>
+  <% if user_signed_in? %>
+    <%= link_to 'Profile', user_path(current_user), class: 'item' %>
+  <% end %>
   <div class="right menu">
     <div class="item">
       <div class="ui icon input">
