@@ -6,10 +6,11 @@ Rails.application.routes.draw do
   resources :books
   resources :users
 
-  # get 'sessions/new'
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
+
+  get '/users/:id/trades' => 'users#show_trades', as: 'user_trades'
   
 
   root "users#index"

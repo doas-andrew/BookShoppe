@@ -1,16 +1,17 @@
 class UsersController < ApplicationController
 
-	before_action :set_user, only: [:show]
+	before_action :set_user, only: [:show, :show_trades]
 
 	def index
-		# @user = User.all.first
-		# session[:current_user_id] = @user.id
-		# render 'trades'
 		@users = User.all
 	end
 
 	def show
 		render 'user_profile'
+	end
+
+	def show_trades
+		render 'trades'
 	end
 
 	def new
