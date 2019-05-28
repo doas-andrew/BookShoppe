@@ -1,8 +1,13 @@
+<nav class="navbar navbar-dark bg-dark">
 <div class="ui secondary menu">
-  <%= link_to 'Home', root_path, class: 'item' %>
+  <%= link_to 'Home', root_path, class: 'item' %>  
+  <%= link_to 'About', root_path, class: 'item' %>
+  <%= link_to 'Contact', root_path, class: 'item' %>
   <% if user_signed_in? %>
-    <%= link_to 'Profile', user_path(current_user), class: 'item' %>
+  <%= link_to 'Profile', user_path(current_user), class: 'item' %>
+
   <% end %>
+
   <div class="right menu">
     <div class="item">
       <div class="ui icon input">
@@ -10,11 +15,15 @@
         <i class="search link icon"></i>
       </div>
     </div>
+
     <% if user_signed_in? %>
+    <font class="item" size="4">Welcome <%= current_user.first_name %></font>
       <%= link_to "Log out", logout_path, method: :delete, class: 'ui item active' %>
+  
     <% else %>
       <%= link_to "Log in", login_path, class: 'ui item active' %>
       <%= link_to "Sign up", new_user_path, class: 'ui item active' %><br><br>
     <% end %>
   </div>
 </div>
+</nav>

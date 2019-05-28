@@ -9,7 +9,7 @@
 <h1><%= link_to "Edit My Profile", edit_user_path%></h1>
 <div align="center">
 <ul>
-		<%= image_tag(@user.image.url, alt: 'Image') if @user.image? %>
+		<%= image_tag(@user.image.url, alt: @user.full_name) if @user.image? %>
 </ul>
 	<h1>Viewing <%= @user.first_name %>'s profile</h1>
 	<h3><%= @user.first_name %>'s books:</h3>
