@@ -4,18 +4,19 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by(email: params[:email].downcase)
-    byebug
-    @error = false
+    @login_failed = false
     if @user && @user.authenticate(params[:password])
+      session[:current_user_id] = @user.id
       log_in(@user)
       redirect_to :root
     else
-      @error = true
+      @login_failed = true
       render 'new'
     end
   end
   
   def destroy
+    session[:current_user_id] = nil
     log_out
     redirect_to :root
   end

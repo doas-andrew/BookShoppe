@@ -11,13 +11,12 @@
 
   <body>
     <% if user_signed_in? %>
-      <%= link_to "Sign out", logout_path, method: 'delete'%>
+      <%= link_to "Sign out", logout_path, method: :delete %>
     <% else%>
-    <%= link_to "Sign In", login_path%>
-    <%= link_to "Sign Up", new_user_path%><br><br>
+      <%= link_to "Sign In", login_path%> - 
+      <%= link_to "Sign Up", new_user_path%><br><br>
     <%end%>
     <%= flash[:alert] %>
-
     <%= yield %>
   </body>
 </html>
