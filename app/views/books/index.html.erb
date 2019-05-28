@@ -1,15 +1,17 @@
+<div class="view">
+	<div class="view_content">
 <h1>Book Search</h1>
 
+<!-- display all books -->
 <% if @books %>
 	<font size="3">These are all the books in our system</font><hr>
 	<% @books.each do |book| %>
-		<h3><%= link_to book.slug, books_path+"?search=#{book.title}" %><br></h3>
-		<font size="3" style="margin-left: 1%;"><%= user_search_count(book.users.uniq.count) %></font>
-		<br><br><br>
+		<h3><%= link_to book.slug, books_path+"?search=#{book.title}" %></h3>
+		<font size="3" style="margin-left: 1%;"><%= user_search_count(book.users.uniq.count) %></font><br><br><br>
 	<% end %>
 
-<% elsif @book %>
-	<br><hr>
+<!-- display one book -->
+<% elsif @book %><br><hr>
 	<h3><%= @book.slug %></h3>
 	<font size="3" style="margin-left: 1%;"><%= user_search_count(@book.users.uniq.count) %>:</font><br><br>
 
@@ -18,10 +20,18 @@
 		<%= link_to user.full_name, user_path(user) %><br><br>
 	<% end %></h3>
 
-<% elsif @author %>
+<!-- display author's books -->
+<% elsif @author %><br><hr>
+	<h3>Books written by <%= @author.name.titleize %>:</h3><br>
+	<% @author.books.each do |book| %>
+		<h3><%= link_to book.slug, books_path+"?search=#{book.title}" %></h3>
+		<font size="3" style="margin-left: 1%;"><%= user_search_count(book.users.uniq.count) %></font><br><br><br>
+	<% end %>
 	
-
+<!-- display no books -->
 <% else %>
-	<font size="3">We couldn't find a book in our system based on your search criteria.</font><hr>
+	<font size="3">We couldn't find any books in our system based on your search criteria.</font><hr>
 
 <% end %>
+</div>
+</div>

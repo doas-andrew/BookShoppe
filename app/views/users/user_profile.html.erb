@@ -32,10 +32,12 @@
 			<img id="avatar" src="https://i.imgur.com/aO27nat.jpg">
 		<% end %>
 		<img id="avatar" src="<%= @user.avatar.url %>">
-		<div class="btn-group-vertical btn-group-lg" style="width:100%; "align="left">
-			<%= link_to "Edit profile", edit_user_path, class: "btn btn-secondary" if @user == current_user%>
-			<%= link_to "Change password", edit_user_path, class: "btn btn-secondary" if @user == current_user%>
-		</div>
+		<% if @user == current_user %>
+			<div class="btn-group-vertical btn-group-lg" style="width:100%; "align="left">
+				<%= link_to "Edit profile", edit_user_path, class: "btn btn-secondary" %>
+				<%= link_to "Change password", edit_password_path, class: "btn btn-secondary" %>
+			</div>
+		<% end %>
 	</div>
 	
 	<div align="center">

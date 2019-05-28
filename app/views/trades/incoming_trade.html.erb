@@ -1,15 +1,18 @@
-<h1><%= @trade.created_at.strftime('%D') %> - Trade with <%= link_to @trade.sender.full_name, user_path(@trade.sender) %></h1>
+<div class="view">
+	<div class="view_content">
+		<h1><%= @trade.created_at.strftime('%D') %> - Trade with <%= link_to @trade.sender.full_name, user_path(@trade.sender) %></h1><br>
+		<h3><%= @trade.sender.first_name %> has requested to trade the following book(s):</h3>
+		<% @trade.sender_hash.each do |slug, num| %>
+				<%= [num, 'x ', slug].join %><br>
+		<% end %><br>
 
-<h3><%= @trade.sender.first_name %> has requested to trade the following book(s):</h3>
-<% @trade.sender_hash.each do |slug, num| %>
-		<%= [num, 'x ', slug].join %><br>
-<% end %><br>
+		<h3>For your:</h3>
+		<% @trade.recipient_hash.each do |slug, num| %>
+			<%= [num, 'x ', slug].join %><br>
+		<% end %><br>
 
-<h3>For your:</h3>
-<% @trade.recipient_hash.each do |slug, num| %>
-	<%= [num, 'x ', slug].join %><br>
-<% end %><br>
-
-<%= link_to 'Accept', accept_trade_path, data: {confirm: "Are you sure you want to accept this trade? Your shipping address will be sent to #{@trade.sender.first_name}."} %><br>
-<%= link_to 'Decline', trade_path, method: :delete, data: {confirm: "Are you sure you want to decline this trade?"} %><br>
-<%= link_to 'Back', user_trades_path(session[:current_user_id] %>
+		<%= link_to 'Accept', accept_trade_path, data: {confirm: "Are you sure you want to accept this trade? Your shipping address will be sent to #{@trade.sender.first_name}."} %><br>
+		<%= link_to 'Decline', trade_path, method: :delete, data: {confirm: "Are you sure you want to decline this trade?"} %><br>
+		<%= link_to 'Back', user_trades_path(current_user) %>
+	</div>
+</div>

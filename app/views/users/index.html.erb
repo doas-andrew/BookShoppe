@@ -1,9 +1,0 @@
-<h1>Users</h1>
-
-<% @users.each do |u| %>
-	<li><%= u.full_name %></li>
-<%end%><br>
-
-<% if user_signed_in? %>
-	<h3>Hello, <%= current_user.full_name %>!</h3>
-<%end%>

@@ -23,9 +23,10 @@ body {
 	padding-right: 50%;
 }
 
-.form_content {
+.view_content {
 	padding-top: 5%;
 	padding-left: 10%;
+	padding-right: 10%;
 }
 
  .clearfix::after {

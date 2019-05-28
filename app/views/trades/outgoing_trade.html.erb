@@ -1,16 +1,22 @@
-<h1><%= @trade.created_at.strftime('%D') %> - Trade with <%= link_to @trade.recipient.full_name, user_path(@trade.recipient) %></h1>
+<div class="view">
+	<div class="view_content">
+		<h1><%= @trade.created_at.strftime('%D') %> - Trade with <%= link_to @trade.recipient.full_name, user_path(@trade.recipient) %></h1><br>
 
-<h3>You have requested to trade the following book(s):</h3>
-<% @trade.sender_hash.each do |slug, num| %>
-		<%= [num, 'x  ', slug].join %><br>
-<% end %><br>
+		<h3>You have requested to trade the following book(s):</h3>
+		<font size="4">
+		<% @trade.sender_hash.each do |slug, num| %>
+				<%= [num, 'x  ', slug].join %><br>
+		<% end %></font><br>
 
-<h3>For <%= @trade.recipient.first_name %>'s:</h3>
-<% @trade.recipient_hash.each do |slug, num| %>
-	<%= [num, 'x  ', slug].join %><br>
-<% end %><br>
+		<h3>For <%= @trade.recipient.first_name %>'s:</h3>
+		<font size="4">
+		<% @trade.recipient_hash.each do |slug, num| %>
+			<%= [num, 'x  ', slug].join %><br>
+		<% end %></font><br>
 
-<h4>Waiting for a response from this user. Check back later.</h4>
 
-<%= link_to 'Cancel this trade', trade_path, method: :delete, data: {confirm: 'Are you sure you want to cancel your trade request?'} %><br>
-<%= link_to 'Back', user_trades_path(session[:current_user_id]) %>
+		<div class="btn-group-lg"></div>
+			<%= link_to 'Cancel this trade', trade_path, method: :delete, data: {confirm: 'Are you sure you want to cancel your trade request?'}, class: "btn btn-secondary" %>
+			<%= link_to 'Back', user_trades_path(current_user), class: "btn btn-secondary" %>
+	</div>
+</div>
