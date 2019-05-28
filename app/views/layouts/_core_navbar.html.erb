@@ -7,7 +7,7 @@
 </style>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="<%= root_path %>">BookShoppe</a>
+  <a class="navbar-brand" href="<%= root_path %>"><b>Book</b>Shoppe</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -24,9 +24,9 @@
           Other
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">About BookShoppe</a>
+          <a class="dropdown-item" href="#">About <b>Book</b>Shoppe</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Contact us</a>
+          <a class="dropdown-item" href="#">Contact Us</a>
         </div>
       </li>
     </ul>
@@ -38,7 +38,7 @@
       <%= link_to 'Logout', logout_path, class: 'btn logout', method: :delete %>
     <% else %>
       <%= link_to 'Login', login_path, class: 'btn btn-outline-success' %>&nbsp &nbsp
-      <%= link_to 'Sign up', new_user_path, class: 'btn btn-outline-success' %>
+      <%= link_to 'Sign Up', new_user_path, class: 'btn btn-outline-success' %>
     <% end %>
   </div>
 </nav>
