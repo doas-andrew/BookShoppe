@@ -13,6 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+*{
+	font-family: 'Raleway', sans-serif;
+}
+
 body {
 	background-image: url(off/homepage_bg.jpg);
 }
