@@ -1,7 +1,6 @@
 class BooksController < ApplicationController
 
 	def index
-		# byebug
 		if params[:search] == '' || params[:search] == nil
 			@books = Book.all
 		else
