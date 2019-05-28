@@ -1,6 +1,6 @@
 <div class="view">
-	<div class="form_content">
-		<h2>Join Book Shoppe!</h2><br>
+	<div class="view_content">
+		<h2>Join BookShoppe</h2><br>
 
 		<div class="errors">
 			<ul>
@@ -10,7 +10,7 @@
 			</ul>
 		</div>
 
-		<%= form_for @user, :html => { :multipart => true } do |f| %>
+		<%= form_for @user do |f| %>
 
 			First name<br>
 			<%= f.text_field :first_name %><br><br>

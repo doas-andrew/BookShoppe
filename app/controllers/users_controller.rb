@@ -1,18 +1,17 @@
 class UsersController < ApplicationController
 
-	before_action :set_user, only: [:show, :show_trades, :edit, :update]
+	before_action :set_user, only: [:show, :show_trades, :edit, :update, :edit_password, :update_password]
 
 	def index
 		@users = User.all
 	end
 
 	def show
-		# byebug
-		render 'user_profile'
+		render :user_profile
 	end
 
 	def show_trades
-		render 'trades'
+		render :trades
 	end
 
 	def new
@@ -20,12 +19,12 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(create_user_params)
+    @user = User.new(user_params)
      if @user.save
      	login(@user)
 			redirect_to users_path
 		else
-			render 'new'
+			render :new
 		end
 	end
 
@@ -33,19 +32,29 @@ class UsersController < ApplicationController
 	end
 
 	def update
-		if @user.update(create_user_params)
-            redirect_to user_path(@user)
-        else 
-            render :edit
-        end 
+		if @user.update(user_params)
+			redirect_to user_path(@user)
+		else
+			render :edit
+		end 
 	end
 
-	def change_password
+	def edit_password
+		render :change_password
+	end
+
+	def update_password
+		byebug
+		if @user.update(user_params)
+			redirect_to user_path(@user)
+		else
+			render :change_password
+		end 
 	end
 
 	private
 
-	def create_user_params
+	def user_params
 		params[:user][:phone_number] = params[:user][:phone_number].gsub(/\-|\.|\s/, '') if params[:user][:phone_number]
 		params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :phone_number, :address, :avatar)
 	end
