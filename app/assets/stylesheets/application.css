@@ -13,6 +13,12 @@
  *= require_tree .
  *= require_self
  */
+ .clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
 #navbar {
 	margin-left: 0.50%;
 	margin-right: 0.50%;

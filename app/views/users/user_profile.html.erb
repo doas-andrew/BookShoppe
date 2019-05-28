@@ -1,13 +1,15 @@
 <style type="text/css">
 
 	#profile_page {
-		margin-left: 20%;
-		margin-right: 20%;
+		padding-top: 2%;
+		margin-left: 15%;
+		margin-right: 15%;
 
-		background-color: #D6DDE1;
+		background-color: #FFFFFF;
 	}
 
 	#user_card {
+		margin-left: 5%;
 		max-width:30%;
 		max-height:30%;
 		float: left;
@@ -40,4 +42,5 @@
 			<%= link_to 'Propose a trade with this user.', new_trade_path if @user != current_user %>
 		</font>
 	</div>
+	<div class="clearfix"></div>
 </div>
