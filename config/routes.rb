@@ -7,9 +7,9 @@ Rails.application.routes.draw do
   resources :trades
   resources :books
   resources :users
-
+                                                              
   get '/login' => 'sessions#new', as: 'login'
-  post '/login' => 'sessions#create'
+  post '/login' => 'sessions#create' 
   delete '/logout' => 'sessions#destroy', as: 'logout'
 
   get '/users/:id/trades' => 'users#show_trades', as: 'user_trades'
