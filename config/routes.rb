@@ -14,9 +14,9 @@ Rails.application.routes.draw do
   delete '/logout' => 'sessions#destroy', as: 'logout'
 
   get '/users/:id/trades' => 'users#show_trades', as: 'user_trades'
+  get '/users/:id/password' => 'users#edit_password', as: 'edit_password'
+  patch '/users/:id/password' => 'users#update_password'
   
-
-
   get '/trades/:id/accept' => 'trades#accept', as: 'accept_trade'
   get '/trades/:id/decline' => 'trades#decline', as: 'decline_trade'
 end
