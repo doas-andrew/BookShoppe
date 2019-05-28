@@ -6,6 +6,12 @@
   <% end %>
 </ul>
 
+  <% if flash[:notice] %>
+    <div class="notification is-warning">
+      <p><%=flash[notice] %> </p>
+    </div>
+    <%end%>
+
 <%= form_for @user, :html => { :multipart => true } do |f| %>
 
 	First name<br>
