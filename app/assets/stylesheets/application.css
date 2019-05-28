@@ -13,17 +13,31 @@
  *= require_tree .
  *= require_self
  */
+body {
+	background-image: url(off/homepage_bg.jpg);
+}
+
+.errors {
+	float: right;
+	color: red;
+	padding-right: 50%;
+}
+
+.form_content {
+	padding-top: 5%;
+	padding-left: 10%;
+}
+
  .clearfix::after {
   content: "";
   clear: both;
   display: table;
 }
 
-#navbar {
-	margin-left: 0.50%;
-	margin-right: 0.50%;
-}
-
-.content {
-	margin: 1%;
-}
+.view {
+		margin-top: 1%;
+		margin-left: 15%;
+		margin-right: 15%;
+		height: 90vh;
+		background-color: #F1F3F5;
+	}

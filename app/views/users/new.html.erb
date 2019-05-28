@@ -1,3 +1,39 @@
-<% @header_msg = 'Sign up for ######' %>
-<% @button_msg = 'Sign up' %>
-<%= render 'form', post: @user%>
+<div class="view">
+	<div class="form_content">
+		<h2>Join Book Shoppe!</h2><br>
+
+		<div class="errors">
+			<ul>
+			  <% @user.errors.full_messages.each do |error| %>
+			    <li><%= error %></li>
+			  <% end %>
+			</ul>
+		</div>
+
+		<%= form_for @user, :html => { :multipart => true } do |f| %>
+
+			First name<br>
+			<%= f.text_field :first_name %><br><br>
+
+			Last name<br>
+			<%= f.text_field :last_name %><br><br>
+
+			Email Address<br>
+			<%= f.text_field :email %><br><br>
+
+			Password<br>
+			<%= f.password_field :password %><br><br>
+
+			Confirm password<br>
+			<%= f.password_field :password_confirmation %><br><br>
+
+			Phone number<br>
+			<%= f.text_field :phone_number %><br><br>
+
+			Address<br>
+			<%= f.text_field :address %><br><br>
+
+			<%= f.submit 'Sign up' %>
+		<% end %>
+	</div>
+</div>

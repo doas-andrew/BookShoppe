@@ -1,3 +1,36 @@
-<% @header_msg = 'Edit My Profile' %>
-<% @button_msg = 'Submit' %>
-<%= render 'form', post: @user  %>
+<div class="view">
+	<div class="form_content">
+		<h2>Update user information</h2><br>
+
+		<div class="errors">
+			<ul>
+			  <% @user.errors.full_messages.each do |error| %>
+			    <li><%= error %></li>
+			  <% end %>
+			</ul>
+		</div>
+
+		<%= form_for @user, :html => { :multipart => true } do |f| %>
+
+			First name<br>
+			<%= f.text_field :first_name %><br><br>
+
+			Last name<br>
+			<%= f.text_field :last_name %><br><br>
+
+			Email Address<br>
+			<%= f.text_field :email %><br><br>
+
+			Phone number<br>
+			<%= f.text_field :phone_number %><br><br>
+
+			Address<br>
+			<%= f.text_field :address %><br><br>
+
+			Change profile picture<br>
+			<%= f.file_field :avatar %><br><br>
+
+			<%= f.submit 'Update' %>
+		<% end %>
+	</div>
+</div>

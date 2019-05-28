@@ -1,19 +1,22 @@
 <style type="text/css">
 
-	#profile_page {
-		padding-top: 2%;
+	#profile_display {
+		margin-top: 1%;
 		margin-left: 15%;
 		margin-right: 15%;
 
-		background-color: #FFFFFF;
+		height: 90vh;
+		background-color: #F1F3F5;
 	}
 
 	#user_card {
+		margin-top: 1%;
 		margin-left: 5%;
+
 		max-width:30%;
 		max-height:30%;
+
 		float: left;
-		text-align: center;
 	}
 
 	#avatar {
@@ -22,14 +25,17 @@
 	}
 </style>
 
-<div id="profile_page">
+<div id="profile_display">
 	<div id="user_card">
-		<h1><%= @user.full_name %></h1>
+		<h1 align="center"><%= @user.full_name %></h1>
 		<% if @user.avatar.url == nil %>
 			<img id="avatar" src="https://i.imgur.com/aO27nat.jpg">
 		<% end %>
 		<img id="avatar" src="<%= @user.avatar.url %>">
-		<font size="5"><%= link_to "Edit my profile", edit_user_path if @user == current_user%></font>
+		<div class="btn-group-vertical btn-group-lg" style="width:100%; "align="left">
+			<%= link_to "Edit profile", edit_user_path, class: "btn btn-secondary" if @user == current_user%>
+			<%= link_to "Change password", edit_user_path, class: "btn btn-secondary" if @user == current_user%>
+		</div>
 	</div>
 	
 	<div align="center">

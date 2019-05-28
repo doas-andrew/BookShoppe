@@ -20,8 +20,10 @@ class UsersController < ApplicationController
   end
 
   def create
+  	params[:phone_number] = params[:phone_number].gsub(/\-|\.|\s/, '')
     @user = User.new(create_user_params)
      if @user.save
+     	login(@user)
 			redirect_to users_path
 		else
 			render 'new'
@@ -32,7 +34,7 @@ class UsersController < ApplicationController
 	end
 
 	def update
-		byebug
+  	params[:phone_number] = params[:phone_number].gsub(/\-|\.|\s/, '')
 		if @user.update(create_user_params)
             redirect_to user_path(@user)
         else 
@@ -40,9 +42,11 @@ class UsersController < ApplicationController
         end 
 	end
 
-
+	def change_password
+	end
 
 	private
+
 	def create_user_params
 		params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :phone_number, :address, :avatar)
 	end

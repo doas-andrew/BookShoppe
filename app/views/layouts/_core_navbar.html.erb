@@ -1,3 +1,11 @@
+<style type="text/css">
+  .logout{color:#BB2525;border-color:#BB2525}
+  .logout:hover{color:#fff;background-color:#BB2525;border-color:#BB2525}
+
+  .search{color:#5292DE;border-color:#5292DE}
+  .search:hover{color:#fff;background-color:#5292DE;border-color:#5292DE}
+</style>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="<%= root_path %>">Book Shoppe</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -8,26 +16,29 @@
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class="nav-item"><%= link_to 'Profile', user_path(current_user), class: 'nav-link' %></li>
+        <li class="nav-item"><%= link_to 'Trades', user_trades_path(current_user), class: 'nav-link' %></li>
       <% end %>
 
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
+          Other
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">About Book Shoppe</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" href="#">Contact us</a>
         </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
       </li>
     </ul>
     <form method="GET" action="<%= books_path %>" class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Find a book" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+      <input name="search" class="form-control mr-sm-2" type="search" placeholder="Find a book" aria-label="Search">
+      <button class="btn search my-2 my-sm-0" type="submit">Search</button>
+    </form>&nbsp &nbsp
+    <% if user_signed_in? %>
+      <%= link_to 'Logout', logout_path, class: 'btn logout', method: :delete %>
+    <% else %>
+      <%= link_to 'Login', login_path, class: 'btn btn-outline-success' %>&nbsp &nbsp
+      <%= link_to 'Sign up', new_user_path, class: 'btn btn-outline-success' %>
+    <% end %>
   </div>
 </nav>
