@@ -10,11 +10,9 @@
 
   <% if user_signed_in? %>
   <%= link_to 'Profile', user_path(current_user), class: 'item' %>
-
   <% end %>
 
   <div class="right menu">
-
     <form method="GET" action="<%= books_path %>">
       <div class="item">
         <div class="ui icon input">
@@ -27,11 +25,9 @@
     <% if user_signed_in? %>
     <font class="item" size="4">Welcome <%= current_user.first_name %></font>
       <%= link_to "Log out", logout_path, method: :delete, class: 'ui item active' %>
-  
     <% else %>
       <%= link_to "Log in", login_path, class: 'ui item active' %>
       <%= link_to "Sign up", new_user_path, class: 'ui item active' %><br><br>
-
     <% end %>
   </div>
 </div>

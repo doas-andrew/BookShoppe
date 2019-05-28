@@ -1,7 +1,8 @@
 class BooksController < ApplicationController
 
 	def index
-		if params[:search] == ''
+		# byebug
+		if params[:search] == '' || params[:search] == nil
 			@books = Book.all
 		else
 			@book = Book.find_by(title: params[:search].downcase)
