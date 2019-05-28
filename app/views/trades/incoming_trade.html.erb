@@ -12,4 +12,4 @@
 
 <%= link_to 'Accept', accept_trade_path, data: {confirm: "Are you sure you want to accept this trade? Your shipping address will be sent to #{@trade.sender.first_name}."} %><br>
 <%= link_to 'Decline', trade_path, method: :delete, data: {confirm: "Are you sure you want to decline this trade?"} %><br>
-<%= link_to 'Back', user_trades_path(session[:current_user_id] %>
+<%= link_to 'Back', user_trades_path(current_user) %>

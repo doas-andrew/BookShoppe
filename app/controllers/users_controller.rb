@@ -20,7 +20,6 @@ class UsersController < ApplicationController
   end
 
   def create
-  	params[:phone_number] = params[:phone_number].gsub(/\-|\.|\s/, '')
     @user = User.new(create_user_params)
      if @user.save
      	login(@user)
@@ -34,7 +33,6 @@ class UsersController < ApplicationController
 	end
 
 	def update
-  	params[:phone_number] = params[:phone_number].gsub(/\-|\.|\s/, '')
 		if @user.update(create_user_params)
             redirect_to user_path(@user)
         else 
@@ -48,6 +46,7 @@ class UsersController < ApplicationController
 	private
 
 	def create_user_params
+		params[:user][:phone_number] = params[:user][:phone_number].gsub(/\-|\.|\s/, '') if params[:user][:phone_number]
 		params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :phone_number, :address, :avatar)
 	end
 
