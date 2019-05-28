@@ -22,9 +22,8 @@ class Trade < ApplicationRecord
   def sender_hash
   	h = {}
   	self.sender_books.each { |book|
-  		slug = %Q["#{book.title}" by #{book.author}]
-  		h[slug] ||= 0
-  		h[slug]  += 1
+  		h[book.slug] ||= 0
+  		h[book.slug]  += 1
   	}
   	return h
   end
@@ -46,9 +45,8 @@ class Trade < ApplicationRecord
   def recipient_hash
   	h = {}
   	self.recipient_books.each { |book|
-  		slug = %Q["#{book.title}" by #{book.author}]
-  		h[slug] ||= 0
-  		h[slug]  += 1
+  		h[book.slug] ||= 0
+  		h[book.slug]  += 1
   	}
   	return h
   end
