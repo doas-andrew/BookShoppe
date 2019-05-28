@@ -6,7 +6,7 @@
   <% end %>
 </ul>
 
-<%= form_for(@user) do |f| %>
+<%= form_for @user, :html => { :multipart => true } do |f| %>
 
 	First name<br>
 	<%= f.text_field :first_name %><br><br>
@@ -29,5 +29,9 @@
 	Address<br>
 	<%= f.text_field :address %><br><br>
 
+	Add My Profile Picture<br>
+	<%= f.file_field :image %><br><br>
+
 	<%= f.submit @button_msg %>
 <% end %>
+

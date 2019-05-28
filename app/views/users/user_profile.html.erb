@@ -6,8 +6,11 @@
 	}
 </style>
 
-<img id="profile_image" src="<%= @user.avatar_url %>" alt="<%= @user.full_name %>">
+<h1><%= link_to "Edit My Profile", edit_user_path%></h1>
 <div align="center">
+<ul>
+		<%= image_tag(@user.image.url, alt: 'Image') if @user.image? %>
+</ul>
 	<h1>Viewing <%= @user.first_name %>'s profile</h1>
 	<h3><%= @user.first_name %>'s books:</h3>
 	<% @user.inventory.each do |slug, num| %>
