@@ -11,9 +11,7 @@
   </head>
 
   <body>
-    <%= render 'layouts/navbar' %>
-    
-    <!-- dont touch this yield -->
-    <%= yield %>
+    <div id="navbar"><%= render 'layouts/navbar' %></div>
+    <div class="content"><%= yield %></div>
   </body>
 </html>

@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 	end
 
 	def show
+		# byebug
 		render 'user_profile'
 	end
 
@@ -31,6 +32,7 @@ class UsersController < ApplicationController
 	end
 
 	def update
+		byebug
 		if @user.update(create_user_params)
             redirect_to user_path(@user)
         else 
@@ -42,7 +44,7 @@ class UsersController < ApplicationController
 
 	private
 	def create_user_params
-		params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :phone_number, :address, :image)
+		params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :phone_number, :address, :avatar)
 	end
 
 	def set_user

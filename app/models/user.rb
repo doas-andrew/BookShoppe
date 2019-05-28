@@ -1,9 +1,10 @@
 class User < ApplicationRecord
-	mount_uploader :image, ImageUploader
-	has_secure_password
 
 	has_many :user_books
 	has_many :books, through: :user_books
+
+	mount_uploader :avatar, AvatarUploader
+	has_secure_password
 
 	EMAIL_REGEX = /\A([\w+\-]\.?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
 	PHONE_REGEX = /\d{3}[-.\ ]\d{3}[-.\ ]\d{4}|\d{10}/
@@ -19,9 +20,8 @@ class User < ApplicationRecord
   validates :last_name,    { presence: true,
     											   length: {maximum: 50}
     										   }
-  validates :phone_number, { presence: true,
-    												 format: {with: PHONE_REGEX}
-    											 }
+  validates :phone_number, { format: {with: PHONE_REGEX}
+													 }
   validates :email,        { presence: true,
                              uniqueness: {case_sensitive: false},
                      	       format: {with: EMAIL_REGEX},
@@ -46,9 +46,8 @@ class User < ApplicationRecord
 	def inventory
 		h = {}
 		self.books.each { |book|
-  		slug = %Q["#{book.title}" by #{book.author}]
-  		h[slug] ||= 0
-  		h[slug]  += 1
+  		h[book.slug] ||= 0
+  		h[book.slug]  += 1
 		}
 		return h
 	end
