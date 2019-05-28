@@ -9,4 +9,8 @@ class BooksController < ApplicationController
 			@author = Author.find_by(name: params[:search].downcase) if @book == nil
 		end
 	end
+
+	def new
+	end
+	
 end

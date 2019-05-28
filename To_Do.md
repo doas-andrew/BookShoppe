@@ -19,6 +19,7 @@
 
 ## **Users**
   * Add owned book to trade
+  * link_to profile
   * User rating?
 
 ## **Trades**
