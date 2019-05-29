@@ -1,0 +1,23 @@
+<div class="view y-scroll">
+	<div class="view_content">
+		<h1>New Trade with <%= @recipient.username %></h1><br><br>
+
+		<%= form_tag trades_path do %>
+			<%= hidden_field_tag 'recipient_id', params[:id] %>
+
+			<h3>Offer</h3>
+			<font size="4">
+			<% current_user.inventory.each do |slug, num| %>
+				<%= number_field_tag 'trade[sender_books][]', 0, in: 0..num %> <%= slug %><br>
+			<% end %></font><br><br><br><br>
+
+			<h3><%= @recipient.username %>'s books</h3>
+			<font size="4">
+			<% @recipient.inventory.each do |slug, num| %>
+				<%= number_field_tag 'trade[sender_books][]', 0, in: 0..num %> <%= slug %><br>
+			<% end %></font><br><br>
+
+			<input type="submit" value="Request Trade">
+		<% end %>
+	</div>
+</div>

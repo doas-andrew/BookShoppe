@@ -28,7 +28,7 @@ class UsersController < ApplicationController
 	end
 
 	def update
-		if @user.authenticate(params[:user][:password]) && @user.update(user_params)
+		if @user.update(user_params)
 			redirect_to user_path(@user)
 		else
 			render :edit

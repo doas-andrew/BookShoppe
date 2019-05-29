@@ -1,10 +1,10 @@
-<div class="view" style="overflow-y: scroll">
+<div class="view y-scroll">
 	<div class="view_content">
 		<h1>Book Search</h1>
 
 		<!-- display all books -->
 		<% if @books %>
-			<font size="3">Here are all of the books in our system:</font><hr>
+			<font size="3"><br>These are all of the books in our system:</font><hr>
 			<% @books.each do |book| %>
 				<h3><%= link_to book.slug, books_path+"?search=#{book.title}" %></h3>
 				<font size="3" style="margin-left: 1%;"><%= user_search_count(book.users.uniq.count) %></font><br><br><br>
@@ -16,7 +16,7 @@
 			<font size="3" style="margin-left: 1%;"><%= user_search_count(@book.users.uniq.count) %></font><br><br>
 
 			<h3 style="margin-left: 2%;">
-			<% @book.users.each do |user| %>
+			<% @book.users.uniq.each do |user| %>
 				<%= link_to user.username, user_path(user) %><br><br>
 			<% end %></h3>
 

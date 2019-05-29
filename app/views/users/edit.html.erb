@@ -17,16 +17,14 @@
 			Last name<br>
 			<%= f.text_field :last_name %><br><br>
 
-			Email Address<br>
-			<%= f.text_field :email %><br><br>
-
 			Username<br>
 			<%= f.text_field :username %><br><br>
 
+			Email Address<br>
+			<%= f.text_field :email %><br><br>
 		</div>
 
 		<div style="float: left; margin-left: 5%;">
-
 			Password<br>
 			<%= f.password_field :password %><br><br>
 
@@ -41,19 +39,10 @@
 		</div>
 
 		<div style="float: left; margin-left: 10%;">
-
 			Profile picture<br>
 			<%= f.file_field :avatar, accept: 'image/png,image/jpeg' %><br><br>
 
-			Enter password to confirm changes<br>
-			<%= f.password_field :password %><br><br>
-
-
-
-			
-
 		<div class="clearfix"></div>
-<div class="btn-group-vertical btn-group-lg" style="width:100%; "align="left">
 			<%= f.submit 'Update' %>
 		<% end %>
 	</div>
