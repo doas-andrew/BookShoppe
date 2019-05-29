@@ -1,6 +1,10 @@
 module SessionsHelper
-    def log_in(user)
+    def login(user)
         session[:user_id] = user.id
+    end
+    
+    def logout
+        session.delete(:user_id)
     end
 
     def current_user
@@ -9,9 +13,5 @@ module SessionsHelper
 
     def user_signed_in?
         !current_user.nil?
-    end
-    
-    def log_out
-        session.delete(:user_id)
     end
 end

@@ -27,10 +27,10 @@ class SessionsController < ApplicationController
 
   def create
     @user   = User.find_by(email: params[:user].downcase)
-    @user ||= User.find_by(username: params[:user].downcase)
+    @user ||= User.find_by(login_name: params[:user].downcase)
     @login_failed = false
     if @user && @user.authenticate(params[:password])
-      log_in @user
+      login @user
       redirect_to :root
     else
       @login_failed = true
@@ -39,7 +39,7 @@ class SessionsController < ApplicationController
   end
   
   def destroy
-    log_out
+    logout
     redirect_to :root
   end
 end

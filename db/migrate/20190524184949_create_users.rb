@@ -5,7 +5,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :last_name
 
       t.string :username
-      t.string :display_name
+      t.string :login_name
 
       t.string :email
       t.string :phone_number
