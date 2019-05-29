@@ -10,8 +10,9 @@
 			</ul>
 		</div>
 
-		<%= form_for @user, :html => { :multipart => true } do |f| %>
+		<%= form_for @user do |f| %>
 
+		<div style="float: left; background-color: ">
 			First name<br>
 			<%= f.text_field :first_name %><br><br>
 
@@ -21,15 +22,37 @@
 			Email Address<br>
 			<%= f.text_field :email %><br><br>
 
+			Username<br>
+			<%= f.text_field :username %><br><br>
+
+		</div>
+
+		<div style="float: left; margin-left: 5%;">
+
+			Password<br>
+			<%= f.password_field :password %><br><br>
+
+			Confirm password<br>
+			<%= f.password_field :password_confirmation %><br><br>
+
 			Phone number<br>
 			<%= f.text_field :phone_number %><br><br>
-
+			
 			Address<br>
 			<%= f.text_field :address %><br><br>
+		</div>
+
+		<div style="float: left; margin-left: 10%;">
 
 			Change profile picture<br>
 			<%= f.file_field :avatar %><br><br>
 
+
+
+			
+
+		<div class="clearfix"></div>
+<div class="btn-group-vertical btn-group-lg" style="width:100%; "align="left">
 			<%= f.submit 'Update' %>
 		<% end %>
 	</div>

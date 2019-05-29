@@ -10,8 +10,8 @@ class SessionsController < ApplicationController
 
   def create
     @login_failed = false
-    #@user is being overwritten by user name even though email is correct
-    @user = User.find_by(email: params[:user].downcase) || @user = User.find_by(username: params[:user].downcase)
+    @user = User.find_by(email: params[:user].downcase)
+    @user ||= User.find_by(username: params[:user].downcase)
     if @user && @user.authenticate(params[:password])
       log_in @user
       redirect_to :root

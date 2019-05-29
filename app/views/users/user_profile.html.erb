@@ -36,7 +36,7 @@
 		<% if @user == current_user %>
 			<div class="btn-group-vertical btn-group-lg" style="width:100%; "align="left">
 				<%= link_to "Edit profile", edit_user_path, class: "btn btn-secondary" %>
-				<%= link_to "Change password", edit_password_path, class: "btn btn-secondary" %>
+				<%# <%= link_to "Change password", edit_password_path, class: "btn btn-secondary" %>
 			</div>
 		<% end %>
 	</div>
