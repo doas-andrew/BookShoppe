@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   def create
 	@user = User.new(user_params)
      if @user.save
-     	log_in(@user)
+     	login(@user)
 			redirect_to root_path
 		else
 			render :new
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
 	end
 
 	def update
-		if @user.authenticate(params[:user][:password]) && @user.update(user_params)
+		if @user.update(user_params)
 			redirect_to user_path(@user)
 		else
 			render :edit

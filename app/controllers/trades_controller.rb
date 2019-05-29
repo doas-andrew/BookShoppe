@@ -12,6 +12,14 @@ class TradesController < ApplicationController
 		end
 	end
 
+	def new
+		@trade = Trade.new
+		@recipient = User.find(params[:id])
+	end
+
+	def create
+	end
+
 	def destroy
 		if @trade.sender == current_user || @trade.recipient == current_user
 			@trade.destroy

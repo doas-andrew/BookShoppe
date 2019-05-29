@@ -48,5 +48,8 @@ body {
 	float: right;
 	color: red;
 }
-
 /**************************************************/
+.y-scroll {
+	overflow-y: scroll;
+}
+
