@@ -1,20 +1,42 @@
-img {
-  display: block;
-  align-content: center;
-  width: 50%;
-  min-width: 350px;
-  padding: 0px;
+.new_view {
+	margin: 5% 15%;
+	padding: 5%;
+  background-color: #F1F3F5;
+  border-radius: 15px;
 }
 
-h1 {
+.login_logo {
+  display: block;
+  align-content: center;
+  width: 45vmax;
+  min-width: 35vmin;
+}
+
+.home_logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  min-width: 400px;
+  padding: 15px;
+}
+
+.session_h1 {
   display: inline-block;
   margin: -5 px;
 }
 
-.top_padding {
-  padding-top: 10%;
-}
 
 .ff_box {
-  width: 25%;
+  width: 35%;
+  min-width: 250px;
+}
+
+.card-title {
+  color: #8B5E3C;
+}
+
+.card-title:hover {
+  text-decoration: underline;
+  text-decoration-line: #8B5E3C;
 }

@@ -17,29 +17,36 @@
 *{
 	font-family: 'Raleway', sans-serif;
 }
+
 body {
 	/*background-image: url(/homepage_bg.jpg);*/
 }
+
 .clearfix::after {
   content: '';
   clear: both;
 }
+
 /**************************************************/
+
 .view {
 	margin-top: 1%;
 	margin-left: 15%;
 	margin-right: 15%;
 	height: 90vh;
 	background-color: #F1F3F5;
-	}
+}
+
 .view_content {
 	padding-top: 5%;
 	padding-left: 10%;
 	padding-right: 10%;
 }
+
 .errors {
 	display: inline;
 	float: right;
 	color: red;
 }
+
 /**************************************************/
