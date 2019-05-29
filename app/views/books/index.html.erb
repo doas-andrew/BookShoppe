@@ -4,7 +4,7 @@
 
 		<!-- display all books -->
 		<% if @books %>
-			<font size="3">These are all the books in our system</font><hr>
+			<font size="3">Here are all of the books in our system:</font><hr>
 			<% @books.each do |book| %>
 				<h3><%= link_to book.slug, books_path+"?search=#{book.title}" %></h3>
 				<font size="3" style="margin-left: 1%;"><%= user_search_count(book.users.uniq.count) %></font><br><br><br>
