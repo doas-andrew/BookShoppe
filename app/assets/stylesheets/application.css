@@ -38,6 +38,7 @@ body {
 	padding-right: 10%;
 }
 .errors {
+	display: inline;
 	float: right;
 	color: red;
 }
