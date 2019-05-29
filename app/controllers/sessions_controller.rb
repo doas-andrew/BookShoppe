@@ -16,6 +16,7 @@ class SessionsController < ApplicationController
   def new
   end
 
+
   def create
     @user   = User.find_by(email: params[:user].downcase)
     @user ||= User.find_by(username: params[:user].downcase)

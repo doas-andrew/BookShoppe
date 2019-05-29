@@ -38,6 +38,9 @@ class User < ApplicationRecord
 														}
 	validates :password,			{ length: {minimum: 3}
 														}
+
+	validates :password, { length: { minimum: 3 }}										
+														
 	def full_name
 		[self.first_name, ' ', self.last_name].join
 	end
