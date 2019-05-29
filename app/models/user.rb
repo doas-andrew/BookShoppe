@@ -40,8 +40,13 @@ class User < ApplicationRecord
   validates :phone_number, {
   	presence: true,
   	format: {with: PHONE_REGEX},
-  	uniqueness: true
-  }																				
+		uniqueness: true
+	}									
+
+	validates :password, {length: {is: 3}, allow_blank: true}
+	
+
+	
 	def full_name
 		[self.first_name, ' ', self.last_name].join
 	end
