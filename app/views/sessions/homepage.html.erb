@@ -2,27 +2,25 @@
   <img src="BookShoppe_Logo_wTrans.png" alt="BookShoppe Logo">
 </div>
 
-
 <!-- need to make the below 'inline', make the boxes bigger, and fix the links -->
-
 <div display="inline">
   <div class="card" style="width: 20%;">
     <div class="card-body">
-      <a href="/books/new/"><h3 class="card-title"><b>Add A Book</b></h3></a>
-      <p class="card-text">Add a book that you'd like to swap.</p>
+      <a href="<%= @link1 %>"><h3 class="card-title"><b>Add a Book</b></h3></a>
+      <p class="card-text">Add a book that you'd like to trade.</p>
     </div>
   </div>
 
   <div class="card" style="width: 20%;">
     <div class="card-body">
-      <a href="/trades"><h3 class="card-title"><b>Trade Status</b></h3></a>
+      <a href="<%= @link2 %>"><h3 class="card-title"><b>Trade Status</b></h3></a>
       <p class="card-text">Check the status of your trades.</p>
     </div>
   </div>
 
   <div class="card" style="width: 20%;">
     <div class="card-body">
-      <a href="edit_user_path(@user)"><h3 class="card-title"><b>Account Info</b></h3></a>
+      <a href="<%= @link3 %>"><h3 class="card-title"><b>Account Info</b></h3></a>
       <p class="card-text">Make changes to your account.</p>
     </div>
   </div>
