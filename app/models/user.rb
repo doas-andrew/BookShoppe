@@ -8,27 +8,35 @@ class User < ApplicationRecord
 
 	EMAIL_REGEX = /\A([\w+\-]\.?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
 	PHONE_REGEX = /\b\d{3}[-.\s]?\d{3}[-.\s]?\d{4}\b/
+	DISPLAY_NAME_REGEX = /\A[a-zA-Z0-9_]*\z/i
 
   before_save {[ self.email        = self.email.downcase,
   							 self.first_name   = self.first_name.capitalize,
   							 self.last_name    = self.last_name.capitalize,
-  							 self.phone_number = self.phone_number.gsub(/\-|\.|\s/, '')
+  							 self.phone_number = self.phone_number.gsub(/\-|\.|\s/, ''),
+  							 self.display_name = self.username,
+  							 self.username     = self.username.downcase
   						]}
 
-  validates :first_name,   { presence: true,
-  												   length: {maximum: 50}
-  											   }
-  validates :last_name,    { presence: true,
-    											   length: {maximum: 50}
-    										   }
-  validates :phone_number, { uniqueness: true,
-  													 format: {with: PHONE_REGEX}
-													 }
-  validates :email,        { presence: true,
-                             uniqueness: {case_sensitive: false},
-                     	       format: {with: EMAIL_REGEX},
-    									       length: {maximum: 50},
-                           }
+  validates :first_name,		{ presence: true,
+  												  	length: {maximum: 50}
+  													}
+  validates :last_name,			{ presence: true,
+    											  	length: {maximum: 50}
+    												}
+  validates :username,			{ presence: true,
+  														uniqueness: {case_sensitive: false},
+  														format: {with: DISPLAY_NAME_REGEX},
+  													}
+  validates :email,					{ presence: true,
+                            	uniqueness: {case_sensitive: false},
+                     	      	format: {with: EMAIL_REGEX},
+    									      	length: {maximum: 50},
+														}
+  validates :phone_number,	{ presence: true,
+  														uniqueness: true,
+  														format: {with: PHONE_REGEX}
+														}
 	def full_name
 		[self.first_name, ' ', self.last_name].join
 	end

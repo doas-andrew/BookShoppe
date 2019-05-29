@@ -2,11 +2,11 @@
 	<br><h1>Login to BookShoppe</h1>
 
 	<% if @login_failed %>
-		<font style="color: red;">Invalid email or password.</font>
+		<font style="color: red;">Invalid login credentials</font>
 	<% end %><br><br>
 
 	<%= form_tag login_path do %>
-		<input type="email" name="email" placeholder=" Email Address" value="<%= params[:email] %>"><br><br>
+		<input type="text" name="user" placeholder=" Username or Email" value="<%= params[:user] %>"><br><br>
 		<input type="password" name="password" placeholder=" Password"><br><br>
 		<input type="submit" value="Login">
 	<%end%>

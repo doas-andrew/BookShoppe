@@ -20,12 +20,13 @@
 	}
 
 	#avatar {
-		max-width:100%;
-		max-height:100%;
+		min-width:100%;
+		min-height:100%;
 	}
 </style>
 
 <div id="profile_display">
+
 	<div id="user_card">
 		<h1 align="center"><%= @user.full_name %></h1>
 		<% if @user.avatar.url == nil %>
@@ -42,13 +43,18 @@
 	
 	<div align="center">
 		<br>
-		<h2><%= @user.first_name %>'s books</h2>
+		<h1><%= @user.display_name %>'s books</h1>
 		<font size="3">
-			<% @user.inventory.each do |slug, num| %>
-				<%= num %>x <%= slug %><br>
-			<% end %><br>
-			<%= link_to 'Propose a trade with this user.', new_trade_path if @user != current_user %>
+			<% if @user.inventory.size == 0 %>
+				This user does not have any book to trade.
+			<% else %>
+				<% @user.inventory.each do |slug, num| %>
+					<%= num %>x <%= slug %><br>
+				<% end %><br>
+				<%= link_to 'Propose a trade with this user.', new_trade_path if @user != current_user %>
+			<% end %>
 		</font>
 	</div>
+
 	<div class="clearfix"></div>
 </div>

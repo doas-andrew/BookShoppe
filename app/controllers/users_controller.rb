@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
      if @user.save
-     	login(@user)
+     	log_in(@user)
 			redirect_to users_path
 		else
 			render :new
@@ -55,8 +55,8 @@ class UsersController < ApplicationController
 	private
 
 	def user_params
-		params[:user][:phone_number] = params[:user][:phone_number].gsub(/\-|\.|\s/, '') if params[:user][:phone_number]
-		params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :phone_number, :address, :avatar)
+		# params[:user][:phone_number] = params[:user][:phone_number].gsub(/\-|\.|\s/, '') if params[:user][:phone_number]
+		params.require(:user).permit(:first_name, :last_name, :username, :email, :password, :password_confirmation, :phone_number, :address, :avatar)
 	end
 
 	def set_user
