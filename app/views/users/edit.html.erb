@@ -2,13 +2,11 @@
 	<div class="view_content">
 		<h2>Update user information</h2><br>
 
-		<div class="errors">
-			<ul>
-			  <% @user.errors.full_messages.each do |error| %>
-			    <li><%= error %></li>
-			  <% end %>
-			</ul>
-		</div>
+		<ul class="errors">
+			<% @user.errors.full_messages.each do |error| %>
+			  <li><%= error %></li>
+			<% end %>
+		</ul>
 
 		<%= form_for @user, :html => { :multipart => true } do |f| %>
 
@@ -27,8 +25,11 @@
 			Address<br>
 			<%= f.text_field :address %><br><br>
 
-			Change profile picture<br>
-			<%= f.file_field :avatar %><br><br>
+			Profile picture<br>
+			<%= f.file_field :avatar, accept: 'image/png,image/jpeg' %><br><br>
+
+			Enter password to confirm changes<br>
+			<%= f.password_field :password %><br><br>
 
 			<%= f.submit 'Update' %>
 		<% end %>

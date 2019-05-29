@@ -7,15 +7,14 @@ class User < ApplicationRecord
 	has_secure_password
 
 	EMAIL_REGEX = /\A([\w+\-]\.?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
-	PHONE_REGEX = /\b\d{3}[-.\s]?\d{3}[-.\s]?\d{4}\b/
+	PHONE_REGEX = /\A\d{10}\z/
 	DISPLAY_NAME_REGEX = /\A[a-zA-Z0-9_]*\z/i
 
-  before_save {[ self.email        = self.email.downcase,
-  							 self.first_name   = self.first_name.capitalize,
+  before_save {[ self.first_name   = self.first_name.capitalize,
   							 self.last_name    = self.last_name.capitalize,
-  							 self.phone_number = self.phone_number.gsub(/\-|\.|\s/, ''),
   							 self.display_name = self.username,
-  							 self.username     = self.username.downcase
+  							 self.username     = self.username.downcase,
+  							 self.email        = self.email.downcase
   						]}
 
   validates :first_name,		{ presence: true,
@@ -25,17 +24,17 @@ class User < ApplicationRecord
     											  	length: {maximum: 50}
     												}
   validates :username,			{ presence: true,
-  														uniqueness: {case_sensitive: false},
   														format: {with: DISPLAY_NAME_REGEX},
+  														uniqueness: {case_sensitive: false}
   													}
   validates :email,					{ presence: true,
-                            	uniqueness: {case_sensitive: false},
                      	      	format: {with: EMAIL_REGEX},
-    									      	length: {maximum: 50},
+                            	uniqueness: {case_sensitive: false},
+    									      	length: {maximum: 50}
 														}
   validates :phone_number,	{ presence: true,
-  														uniqueness: true,
-  														format: {with: PHONE_REGEX}
+  														format: {with: PHONE_REGEX},
+  														uniqueness: true
 														}
 	def full_name
 		[self.first_name, ' ', self.last_name].join
