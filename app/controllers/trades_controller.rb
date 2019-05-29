@@ -8,7 +8,7 @@ class TradesController < ApplicationController
 		elsif @trade.recipient == current_user
 			render 'incoming_trade'
 		else
-			render(file: 'public/403', status: 403, layout: false)
+			render_403
 		end
 	end
 
@@ -17,7 +17,7 @@ class TradesController < ApplicationController
 			@trade.destroy
 			redirect_to user_trades_path(current_user)
 		else
-			render(file: 'public/403', status: 403, layout: false)
+			render_403
 		end
 	end
 

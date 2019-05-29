@@ -13,32 +13,18 @@
  *= require_tree .
  *= require_self
  */
-
+/**************************************************/
 *{
 	font-family: 'Raleway', sans-serif;
 }
-
 body {
-	background-image: url(off/homepage_bg.jpg);
+	/*background-image: url(/homepage_bg.jpg);*/
 }
-
-.errors {
-	float: right;
-	color: red;
-}
-
-.view_content {
-	padding-top: 5%;
-	padding-left: 10%;
-	padding-right: 10%;
-}
-
- .clearfix::after {
-  content: "";
+.clearfix::after {
+  content: '';
   clear: both;
-  display: table;
 }
-
+/**************************************************/
 .view {
 		margin-top: 1%;
 		margin-left: 15%;
@@ -46,3 +32,13 @@ body {
 		height: 90vh;
 		background-color: #F1F3F5;
 	}
+.view_content {
+	padding-top: 5%;
+	padding-left: 10%;
+	padding-right: 10%;
+}
+.errors {
+	float: right;
+	color: red;
+}
+/**************************************************/

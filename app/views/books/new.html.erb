@@ -1,0 +1,24 @@
+<div class="view">
+	<div class="view_content">
+		<h1>New Book</h1>
+
+		<ul class="errors" style="margin-right: 30%">
+			<% @book.errors.full_messages.each do |error| %>
+			  <li><%= error %></li>
+			<% end %>
+			<% @author.errors.full_messages.each do |error| %>
+			  <li>Author can't be blank</li>
+			<% end %>
+		</ul>
+
+		<%= form_tag books_path do %>
+			Title<br>
+			<input type="text" name="book_title"><br><br>
+
+			Author<br>
+			<input type="text" name="author_name"><br><br>
+
+			<input type="submit" value="Add book">
+		<% end %>
+	</div>
+</div>
