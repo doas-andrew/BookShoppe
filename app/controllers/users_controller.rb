@@ -20,7 +20,6 @@ class UsersController < ApplicationController
 
   def create
 	@user = User.new(user_params)
-	puts 
      if @user.save
      	log_in(@user)
 			redirect_to root_path
