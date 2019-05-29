@@ -1,11 +1,14 @@
 <div id="profile_display">
-
+	
 	<div id="user_card">
 		<h1 align="center"><%= @user.full_name %></h1>
+
 		<% if @user.avatar.url == nil %>
 			<img id="avatar" src="https://i.imgur.com/aO27nat.jpg">
+		<% else %>
+			<img id="avatar" src="<%= @user.avatar.url %>">
 		<% end %>
-		<img id="avatar" src="<%= @user.avatar.url %>">
+
 		<% if @user == current_user %>
 			<div class="btn-group-vertical btn-group-lg" style="width:100%; "align="left">
 				<%= link_to "Edit profile", edit_user_path, class: "btn btn-secondary" %>
@@ -16,7 +19,7 @@
 	
 	<div align="center">
 		<br>
-		<h1><%= @user.username %>'s books</h1>
+		<h1><%= @user.username %>'s books</h1><br>
 		<font size="3">
 			<% if @user.inventory.size == 0 %>
 				This user does not have any book to trade.
@@ -25,7 +28,7 @@
 					<%= num %>x <%= slug %><br>
 				<% end %><br>
 				<% if @user != current_user %>
-					<%= link_to 'Propose a trade with this user.', new_trade_path ,class: 'btn blue_btn' %>
+					<%= link_to 'Propose a trade with this user.', new_trade_path+"?id=#{@user.id}" ,class: 'btn blue_btn' %>
 				<% else %>
 					<%= link_to 'Add another book to your collection.', new_book_path ,class: 'btn blue_btn' %>
 				<% end %>
