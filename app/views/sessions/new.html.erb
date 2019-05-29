@@ -1,13 +1,20 @@
 <div class="view" align="center">
-	<br><h1>Login to <b>Book</b>Shoppe</h1>
 
+	<div class="top_padding"> </div>
+
+	<h1><b>Welcome to</b></h1>
+  <img src="BookShoppe_Logo_wTrans.png" alt="BookShoppe Logo">
+
+	<h3>Please log in or <%= link_to 'sign up', new_user_path %>.</h3>
+		<br><br>
 	<% if @login_failed %>
 		<font style="color: red;">Invalid login credentials!</font>
-	<% end %><br><br>
+	<% end %>
 
 	<%= form_tag login_path do %>
-		<input type="text" name="user" placeholder=" Username or Email" value="<%= params[:user] %>"><br><br>
-		<input type="password" name="password" placeholder=" Password"><br><br>
+		<input class="ff_box" type="text" name="user" placeholder=" Username or Email" value="<%= params[:user] %>"><br><br>
+		<input class="ff_box" type="password" name="password" placeholder=" Password"><br><br>
 		<input type="submit" value="Login">
 	<%end%>
-</div
+
+</div>

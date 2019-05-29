@@ -1,11 +1,20 @@
-// Place all the styles related to the Sessions controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
 img {
   display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 45%;
-  padding: 1%;
+  align-content: center;
+  width: 50%;
+  min-width: 350px;
+  padding: 0px;
+}
+
+h1 {
+  display: inline-block;
+  margin: -5 px;
+}
+
+.top_padding {
+  padding-top: 10%;
+}
+
+.ff_box {
+  width: 25%;
 }
