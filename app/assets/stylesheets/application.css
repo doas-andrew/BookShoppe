@@ -18,17 +18,13 @@
 	font-family: 'Raleway', sans-serif;
 }
 
-body {
-	/*background-image: url(/homepage_bg.jpg);*/
-}
-
 .clearfix::after {
   content: '';
   clear: both;
+  display: table;
 }
 
 /**************************************************/
-
 .view {
 	margin-top: 1%;
 	margin-left: 15%;
@@ -52,4 +48,3 @@ body {
 .y-scroll {
 	overflow-y: scroll;
 }
-
