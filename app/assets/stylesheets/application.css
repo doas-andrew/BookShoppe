@@ -26,11 +26,11 @@ body {
 }
 /**************************************************/
 .view {
-		margin-top: 1%;
-		margin-left: 15%;
-		margin-right: 15%;
-		height: 90vh;
-		background-color: #F1F3F5;
+	margin-top: 1%;
+	margin-left: 15%;
+	margin-right: 15%;
+	height: 90vh;
+	background-color: #F1F3F5;
 	}
 .view_content {
 	padding-top: 5%;

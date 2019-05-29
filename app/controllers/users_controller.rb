@@ -1,10 +1,6 @@
 class UsersController < ApplicationController
 
-	before_action :set_user, only: [:show, :show_trades, :edit, :update, :edit_password, :update_password]
-
-	def index
-		@users = User.all
-	end
+	before_action :set_user, except: [:new, :create]
 
 	def show
 		render :user_profile
@@ -39,24 +35,19 @@ class UsersController < ApplicationController
 		end 
 	end
 
-	def edit_password
-		render :change_password
-	end
-
-	def update_password
-		if @user.update(user_params)
-			redirect_to user_path(@user)
-		else
-			render :change_password
-		end 
+	def destroy
+		@user.all_trades.each(&:destroy)
+		@user.trade_books.each(&:destroy)
+		@user.user_books.each(&:destroy)
+		@user.destroy
+		redirect_to root_path
 	end
 
 	private
 
 	def user_params
-		params[:user][:phone_number] = params[:user][:phone_number].gsub(/[^0-9]/, '') if params[:user][:phone_number]
+		params[:user][:phone_number].gsub!(/[^0-9]/, '')
 		params.require(:user).permit(:first_name, :last_name, :username, :email, :password, :password_confirmation, :phone_number, :address, :avatar)
-		# byebug
 	end
 
 

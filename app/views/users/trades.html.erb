@@ -6,14 +6,14 @@
 		<font size='4'><ul>
 		<%= 'None.' if @user.out_trades.count == 0 %>
 		<% @user.out_trades.each do |trade| %>
-			<%= link_to [trade.created_at.strftime('%D'), ' - Trade with ', trade.recipient.full_name].join	, trade_path(trade) %><br>
+			<%= link_to [trade.created_at.strftime('%D'), ' - Trade with ', trade.recipient.username].join	, trade_path(trade) %><br>
 		<% end %></font></ul><hr>
 
 		<h3>Incoming Trade requests</h3>
 		<font size='4'><ul>
 		<%= 'None' if @user.inc_trades.count == 0 %>
 		<% @user.inc_trades.each do |trade| %>
-			<%= link_to [trade.created_at.strftime('%D'), ' - Trade with ', trade.sender.full_name].join	, trade_path(trade) %><br>
+			<%= link_to [trade.created_at.strftime('%D'), ' - Trade with ', trade.sender.username].join	, trade_path(trade) %><br>
 		<% end %></font></ul><hr>
 	</div>
 </div>
