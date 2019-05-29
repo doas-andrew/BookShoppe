@@ -37,6 +37,9 @@ class User < ApplicationRecord
   														uniqueness: true,
   														format: {with: PHONE_REGEX}
 														}
+
+	validates :password, { length: { minimum: 4 }}										
+														
 	def full_name
 		[self.first_name, ' ', self.last_name].join
 	end
