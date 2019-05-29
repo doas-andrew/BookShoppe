@@ -5,12 +5,21 @@ class SessionsController < ApplicationController
       @link1 = new_book_path
       @link2 = user_trades_path(current_user)
       @link3 = user_path(current_user)
+      render 'homepage'
     else
-      @link1 = new_user_path
-      @link2 = new_user_path
-      @link3 = new_user_path
+      render :new
     end
-    render 'homepage'
+
+    # if user_signed_in?
+    #   @link1 = new_book_path
+    #   @link2 = user_trades_path(current_user)
+    #   @link3 = user_path(current_user)
+    # else
+    #   @link1 = new_user_path
+    #   @link2 = new_user_path
+    #   @link3 = new_user_path
+    # end
+    # render 'homepage'
   end
 
   def new
