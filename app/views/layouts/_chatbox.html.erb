@@ -1,11 +1,11 @@
 <div id="chatbox">
 	<div id="comments">
 		<% @trade.comments.each do |c| %>
-			<%= [c.created_at.strftime('%H:%M'), ' - ', c.user.username, ': ', c.content].join %><br>
+			<%= c.created_at.strftime('%H:%M') %> - <font style="color: blue;"><%= c.user.username %></font>: <%= c.content %><br>
 		<% end %>
 	</div>
 	<hr>
-		<%= form_tag comments_path do %>
+	<%= form_tag comments_path do %>
 		<input type="hidden" name="comment[trade_id]" value="<%= @trade.id %>">
 		<input type="hidden" name="comment[user_id]" value="<%= current_user.id %>">
 		<input type="text"   name="comment[content]" placeholder="Type a message here">
