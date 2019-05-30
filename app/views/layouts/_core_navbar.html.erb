@@ -19,14 +19,14 @@
     </form>
 
     <!-- Forgive me CSS gods, for I have sinned greatly. -->
-    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
 
     <% if user_signed_in? %>
-      <%= link_to 'Logout', logout_path, class: 'btn red_btn', method: :delete %>
+      <%= link_to logout_path, method: :delete, class: "btn red_btn" do %>&nbsp Logout &nbsp<i class="sign-out icon"></i><% end %>
     <% else %>
-      <%= link_to 'Login', login_path, class: 'btn btn-outline-success' %>&nbsp &nbsp &nbsp
-      <%= link_to 'Sign Up', new_user_path, class: 'btn btn-outline-success' %>
+      <a href="<%= login_path %>" class="btn btn-outline-success"><i class="sign-in icon"></i> Login</a>&nbsp &nbsp &nbsp
+      <a href="<%= new_user_path %>" class="btn btn-outline-success"><i class="user plus icon"></i> Sign Up</a>
     <% end %>
     &nbsp &nbsp &nbsp
   </div>

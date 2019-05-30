@@ -35,3 +35,6 @@ Book.all.each do |book|
 end
 
 Trade.create(sender: User.all[1], recipient: User.all[0], status: 'pending').trade_books << [TradeBook.create(user_book: UserBook.all[0]), TradeBook.create(user_book: UserBook.all[1]), TradeBook.create(user_book: UserBook.all[2])]
+
+Comment.create(trade: Trade.first, user: User.first, content: 'Hello world.')
+Comment.create(trade: Trade.first, user: User.all[1], content: "Jae here.")

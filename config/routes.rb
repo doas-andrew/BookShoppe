@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
-  resources :authors
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  resources :authors
   root "sessions#index"
 
   resources :books, only: [:index, :new, :create]
   
-  resources :comments, only: [:index, :create, :destroy]
+  resources :comments, only: :create
 
   resources :users, except: [:index]
   get '/users/:id/trades' => 'users#show_trades', as: 'user_trades'
