@@ -43,6 +43,14 @@ class TradesController < ApplicationController
 		redirect_if_not_logged_in
 		if @trade.recipient == current_user
 			@trade.update(status: 'accepted')
+			@trade.user_books.each {|ub|
+				ub.trades.each {|trade|
+					if trade != @trade
+						trade.trade_books.each(&:destroy)
+						trade.destroy
+					end
+				}
+			}
 			redirect_to user_trades_path(current_user)
 		else
 			render_403
