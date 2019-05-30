@@ -1,19 +1,19 @@
 <div class="view">
 	<div class="view_content">
 
-		<h1><%= @trade.created_at.strftime('%D') %> - Trade with <%= link_to @trade.sender.full_name, user_path(@trade.sender) %></h1><br>
+		<h1><%= @trade.created_at.strftime('%D') %> - Trade with <%= link_to @trade.sender.full_name, user_path(@trade.sender) %></h1><hr><br>
 
 		<h3><%= @trade.sender.first_name %> has requested to trade the following books</h3>
-		<font size="4">
+		<ul><font size="4">
 		<% @trade.sender_hash.each do |slug, num| %>
 				<%= [num, 'x ', slug].join %><br>
-		<% end %></font><br>
+		<% end %></font></ul><br><br>
 
 		<h3>For your</h3>
-		<font size="4">
+		<ul><font size="4">
 		<% @trade.recipient_hash.each do |slug, num| %>
 			<%= [num, 'x ', slug].join %><br>
-		<% end %></font><br>
+		<% end %></font></ul><br><hr><br>
 
 		<div class="btn-group-lg">
 			<%= link_to 'Accept', accept_trade_path, method: :patch, data: {confirm: "Are you sure you want to accept this trade?\nYour shipping address will be sent to #{@trade.sender.first_name}."}, class: "btn btn-secondary" %>
