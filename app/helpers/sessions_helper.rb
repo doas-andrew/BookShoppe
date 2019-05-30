@@ -18,4 +18,8 @@ module SessionsHelper
     def redirect_if_not_logged_in
         redirect_to root_path if !user_signed_in?
     end
+    
+    def render_403
+        render(file: 'public/403', status: 403, layout: false)
+    end
 end

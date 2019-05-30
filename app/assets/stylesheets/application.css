@@ -21,7 +21,32 @@
 a.large_btn {
 	font-size: 1.1em;
 }
+/**************************************************/
+.red_btn {
+  color: #BB2525;
+  border-color: #BB2525;
+}
 
+.red_btn:hover {
+  color: #fff;
+  border-color: #BB2525;
+  background-color: #BB2525;
+}
+
+.blue_btn {
+  color: #5292DE;
+  border-color: #5292DE;
+}
+
+.blue_btn:hover {
+  color: #fff;
+  border-color: #5292DE;
+  background-color: #5292DE;
+}
+
+#brand-color {
+  color: #8B5E3C;
+}
 /**************************************************/
 .view {
 	margin-top: 1%;
@@ -53,3 +78,4 @@ a.large_btn {
   clear: both;
   display: table;
 }
+/**************************************************/
