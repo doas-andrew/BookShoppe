@@ -16,7 +16,7 @@
 		<% end %></font><br>
 
 		<div class="btn-group-lg">
-			<%= link_to 'Accept', accept_trade_path, data: {confirm: "Are you sure you want to accept this trade? Your shipping address will be sent to #{@trade.sender.first_name}."}, class: "btn btn-secondary" %>
+			<%= link_to 'Accept', accept_trade_path, data: {confirm: "Are you sure you want to accept this trade?\nYour shipping address will be sent to #{@trade.sender.first_name}."}, class: "btn btn-secondary" %>
 			<%= link_to 'Decline', trade_path, method: :delete, data: {confirm: 'Are you sure you want to decline this trade?'}, class: "btn btn-secondary" %><br><br>
 		</div>
 		<a class="btn blue_btn large_btn" href="<%= user_trades_path(current_user) %>"><i class="arrow left icon"></i> Previous</a>

@@ -27,6 +27,7 @@ class TradesController < ApplicationController
 
 	def destroy
 		if @trade.sender == current_user || @trade.recipient == current_user
+			@trade.trade_books.each(&:destroy)
 			@trade.destroy
 			redirect_to user_trades_path(current_user)
 		else

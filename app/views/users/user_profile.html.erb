@@ -12,8 +12,8 @@
 
 			<% if @user == current_user %>
 				<div class="btn-group-vertical btn-group-lg" style="width:100%; "align="left">
-					<%= link_to "Edit profile", edit_user_path, class: "btn btn-secondary" %>
-					<%= link_to "Delete profile", user_path, method: :delete, data: {confirm: "Are you sure you want to delete your profile?\nAll of your active trades will be canceled.\n\nThis can't be undone. "}, class: "btn btn-secondary" %>
+					<a href="<%= edit_user_path %>" class="btn btn-secondary">Edit Profile &nbsp <i class="pencil alternate icon"></i></a>
+					<%= link_to user_path, method: :delete, data: {confirm: "Are you sure you want to delete your profile?\nAll of your active trades will be canceled.\n\nThis can't be undone. "}, class: "btn btn-secondary" do %>Delete Profile &nbsp <i class="user times icon"></i><% end %>
 				</div>
 			<% end %>
 		</div>
