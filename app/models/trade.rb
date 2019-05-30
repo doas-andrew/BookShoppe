@@ -5,6 +5,7 @@ class Trade < ApplicationRecord
   has_many :trade_books
   has_many :user_books, through: :trade_books
   has_many :books, through: :user_books
+  has_many :comments
 
   def create_tbs(sender_books={}, recipient_books={})
     sender_books.each { |slug, num|

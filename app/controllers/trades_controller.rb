@@ -2,6 +2,10 @@ class TradesController < ApplicationController
 
 	before_action :set_trade, only: [:show, :destroy]
 
+	def index
+		@trades = Trade.all
+	end
+
 	def show
 		if @trade.sender == current_user
 			render :outgoing_trade

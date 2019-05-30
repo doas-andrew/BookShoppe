@@ -19,3 +19,9 @@
 		<a class="btn blue_btn large_btn" href="<%= user_path(current_user) %>"><i class="arrow left icon"></i> Previous</a>
 	</div>
 </div>
+
+<%= form_for trade_comments_path do %>
+		<input class="ff_box" type="text" name="user" placeholder=" Username or Email" value="<%= params[:user] %>"><br><br>
+		<input class="ff_box" type="password" name="password" placeholder=" Password"><br><br>
+		<input type="submit" value="Login">
+	<%end%>
