@@ -1,4 +1,4 @@
-<div class="view y-scroll">
+<div class="view">
 	<div class="row">
 
 		<div id="user_card" class="col">
@@ -17,31 +17,32 @@
 				</div>
 			<% end %>
 		</div>
-		
+
 		<div id="inventory" class="col">
 			<br>
-			<h1 align="center"><%= @user.username %>'s books</h1><br>
+			<h1 class="users-books"><%= @user.username %>'s Books</h1><br>
 
-				<div style="margin-left: 20%;">
+			<div class="inventory-scroll">
+				<div style="margin-left: 10%">
 					<font align="left" size="4">
-					<% if @user.inventory.size == 0 %>
-						<%= @user == current_user ? "You don't have any books to trade." : "This user does not have any books to trade." %><br><br>
-					<% else %>
-						<% @user.inventory.each do |slug, num| %>
-							<%= num %>x <%= slug %><br><br>
-						<% end %><br>
-					<% end %>
-				</font>
+						<% if @user.inventory.size == 0 %>
+							<%= @user == current_user ? "You don't have any books to trade." : "This user does not have any books to trade." %><br><br>
+						<% else %>
+							<% @user.inventory.each do |slug, num| %>
+								<%= num %>x <%= slug %><br><br>
+							<% end %><br>
+						<% end %>
+					</font>
+				</div>
 			</div>
-
+				<br>
 			<div align="center">
 				<% if @user != current_user %>
 					<a href="<%= new_trade_path+"?id=#{@user.id}" %>" class="btn blue_btn large_btn">Propose a trade with this user <i class="book icon"></i></a>
 				<% else %>
 					<a href="<%= new_book_path %>" class="btn blue_btn large_btn">Add a book to your collection <i class="book icon"></i></a>
-				<% end %><br><br><br><br>
+				<% end %>
 			</div>
-
 		</div>
-</div>
+	</div>
 </div>

@@ -51,8 +51,9 @@ a.large_btn {
 	margin-top: 1%;
 	margin-left: 15%;
 	margin-right: 15%;
-	height: 92vh;
+	height: 88vh;
 	background-color: #F1F3F5;
+	border-radius: 5px;
 }
 
 .view_content {
