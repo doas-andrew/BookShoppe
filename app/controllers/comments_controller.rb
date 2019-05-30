@@ -1,7 +1,6 @@
 class CommentsController < ApplicationController
 
   def create
-    byebug
     Comment.create(comment_params) if !params[:comment][:content].empty?
     redirect_to trade_path(params[:comment][:trade_id])
   end
