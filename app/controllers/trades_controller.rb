@@ -28,6 +28,7 @@ class TradesController < ApplicationController
 
 	def new
 		redirect_if_not_logged_in
+		redirect_to root_path if current_user.user_books.count == 0
 		@trade = Trade.new
 		@recipient = User.find(params[:id])
 	end
@@ -58,6 +59,7 @@ class TradesController < ApplicationController
 	end
 
 	def complete
+		redirect_if_not_logged_in
 		if current_user == @trade.sender
 			@trade.update(sender_complete: true)
 		elsif current_user == @trade.recipient

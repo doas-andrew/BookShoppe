@@ -64,7 +64,7 @@ a.large_btn {
 
 .errors {
 	position: absolute;
-	display: inline;
+	display: inline-block;
 	float: right;
 	color: #BB2525;
 }

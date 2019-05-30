@@ -73,12 +73,21 @@ class User < ApplicationRecord
 		Trade.all.select {|t| (t.sender == self || t.recipient == self) &&  t.status == 'completed'}
 	end
 
+  # def inventory
+  #   inv = {}
+  #   self.books.each { |book|
+  #     inv[book.slug] ||= 0
+  #     inv[book.slug]  += 1
+  #   }
+  #   return inv
+  # end
+
   def inventory
     inv = {}
-    self.books.each { |book|
-      inv[book.slug] ||= 0
-      inv[book.slug]  += 1
-    }
+    self.user_books.select{|ub| ub.trades.select{|t| t.status == 'accepted' }.empty? }.each do |ub|
+      inv[ub.book.slug] ||= 0
+      inv[ub.book.slug]  += 1
+    end
     return inv
   end
 

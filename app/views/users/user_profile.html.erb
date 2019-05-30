@@ -18,10 +18,10 @@
 			<% end %>
 				<br><br>
 			<div align="center">
-				<% if @user != current_user %>
-					<a href="<%= new_trade_path+"?id=#{@user.id}" %>" class="btn blue_btn large_btn">Propose a trade with this user <i class="book icon"></i></a>
-				<% else %>
+				<% if @user == current_user %>
 					<a href="<%= new_book_path %>" class="btn blue_btn large_btn">Add a book to your collection <i class="book icon"></i></a>
+				<% elsif current_user && current_user.user_books.count > 0 && @user.inventory.count > 0  %>
+					<a href="<%= new_trade_path+"?id=#{@user.id}" %>" class="btn blue_btn large_btn">Propose a trade with this user <i class="book icon"></i></a>
 				<% end %>
 			</div>
 		</div>
