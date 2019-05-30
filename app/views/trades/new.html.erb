@@ -1,7 +1,7 @@
 <div class="view y-scroll">
-	<div class="view_content">
-		<h1>New Trade with <%= @recipient.username %></h1><br><br>
-
+	<div class="new-trade-content">
+		<h1>New Trade with <%= @recipient.username %></h1>
+			<br>
 		<%= form_tag trades_path do %>
 			<%= hidden_field_tag 'trade[sender_id]', current_user.id %>
 			<%= hidden_field_tag 'trade[recipient_id]', params[:id] %>
