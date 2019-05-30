@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 	end
 
 	def show_trades
-		render :trades
+		render :user_trades
 	end
 
 	def new
