@@ -87,6 +87,45 @@ a.large_btn {
 	border-radius: 2em;
 }
 /**************************************************/
+#chatbox {
+	display: inline-block;
+	position: relative;
+	min-width: 90%;
+	border: 2px solid;
+	height: 36vh;
+	margin: 3vh 0 5vh 5%;
+}
+#chatbox #comments {
+	display: inline-block;
+	position: relative;
+	overflow-y: scroll;
+	height: 30vh; 
+	min-width: 100%;
+	padding: 0.5em 1em;
+	border-radius: 0.5em;
+	font-size: 1.5em;
+}
+#chatbox hr {
+	margin: 0;
+}
+#chatbox form {
+	position: absolute;
+	bottom: 1vh;
+	margin-left: 1em;
+}
+#chatbox button {
+	border: none;
+	background: none;
+}
+#chatbox input {
+	background: none;
+	width: 20em;
+	border: 1px solid;
+}
+#chatbox input::placeholder {
+	text-align: center;
+}
+/**************************************************/
 .y-scroll {
 	overflow-y: scroll;
 	overflow-x: hidden;

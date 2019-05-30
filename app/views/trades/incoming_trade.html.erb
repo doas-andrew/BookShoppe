@@ -1,4 +1,4 @@
-<div class="view">
+<div class="view y-scroll">
 	<div class="view_content">
 
 		<h1>Trade with <%= link_to @trade.sender.full_name, user_path(@trade.sender) %></h1>
@@ -23,4 +23,5 @@
 		</div>
 		<a class="btn blue_btn large_btn" href="<%= user_trades_path(current_user) %>"><i class="arrow left icon"></i> View All Trades</a>
 	</div>
+	<%= render 'layouts/chatbox' %>
 </div>
