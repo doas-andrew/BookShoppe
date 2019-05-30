@@ -9,8 +9,9 @@ Rails.application.routes.draw do
   get '/users/:id/trades' => 'users#show_trades', as: 'user_trades'
   
   resources :trades
-  get '/trades/:id/accept' => 'trades#accept', as: 'accept_trade'
-  get '/trades/:id/decline' => 'trades#decline', as: 'decline_trade'
+  patch '/trades/:id/accept' => 'trades#accept', as: 'accept_trade'
+  patch '/trades/:id/complete' => 'trades#complete', as: 'complete_trade'
+  get '/trades/:id/undo' => 'trades#undo'
 
   get '/login' => 'sessions#new', as: 'login'
   post '/login' => 'sessions#create' 

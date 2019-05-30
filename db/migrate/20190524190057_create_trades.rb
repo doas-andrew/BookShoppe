@@ -4,6 +4,8 @@ class CreateTrades < ActiveRecord::Migration[5.2]
     	t.integer :sender_id
     	t.integer :recipient_id
     	t.string :status
+    	t.boolean :sender_complete, default: false
+    	t.boolean :recipient_complete, default: false
 
       t.timestamps
     end

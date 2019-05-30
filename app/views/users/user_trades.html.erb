@@ -1,6 +1,6 @@
 <div class="view">
 	<div class="view_content">
-		<h1>Your Trades</h1><hr>
+		<h1>Your Trades &nbsp <i class="exchange icon"></i></h1><hr>
 
 		<h3>Outgoing Trade Requests</h3>
 		<font size='4'><ul>
@@ -9,12 +9,21 @@
 			<%= link_to [trade.created_at.strftime('%D'), ' - Trade with ', trade.recipient.username].join	, trade_path(trade) %><br>
 		<% end %></font></ul><hr>
 
-		<h3>Incoming Trade requests</h3>
+		<h3>Incoming Trade Requests</h3>
 		<font size='4'><ul>
 		<%= 'None' if @user.inc_trades.count == 0 %>
 		<% @user.inc_trades.each do |trade| %>
 			<%= link_to [trade.created_at.strftime('%D'), ' - Trade with ', trade.sender.username].join	, trade_path(trade) %><br>
 		<% end %></font></ul><hr><br>
+
+		<% if @user.accepted_trades.count > 0 %>
+
+		<h3>Accepted Trades</h3>
+			<font size='4'><ul>
+			<% @user.accepted_trades.each do |trade| %>
+				<%= link_to [trade.created_at.strftime('%D'), ' - Trade with ', trade.sender.username].join	, trade_path(trade) %><br>
+			<% end %></font></ul><hr><br>
+		<% end %>
 
 		<a class="btn blue_btn large_btn" href="<%= user_path(current_user) %>"><i class="arrow left icon"></i> Previous</a>
 	</div>

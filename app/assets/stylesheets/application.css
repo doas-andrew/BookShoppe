@@ -69,6 +69,24 @@ a.large_btn {
 	color: red;
 }
 /**************************************************/
+#waiting {
+	color: #BB2525;
+	display: inline-block;
+	font-size: 1.5em;
+	border: 1px solid;
+	padding: 0.5em 1em;
+	border-radius: 2em;
+}
+
+#recieved {
+	color: #BAE6C9;
+	display: inline-block;
+	font-size: 1.5em;
+	border: 1px solid;
+	padding: 0.5em 1em;
+	border-radius: 2em;
+}
+/**************************************************/
 .y-scroll {
 	overflow-y: scroll;
 }
