@@ -2,10 +2,10 @@ class BooksController < ApplicationController
 
 	def index
 		if params[:search] == '' || params[:search] == nil
-			@books = Book.all
+			@books = Book.all.sort_by{|b| b.user_books.count }.reverse
 		else
-			@book = Book.find_by(title: params[:search].downcase)
-			@author = Author.find_by(name: params[:search].downcase) if @book == nil
+			@book = Book.find_by(title: params[:search].downcase).sort_by{|b| b.title }
+			@author = Author.find_by(name: params[:search].downcase).sort_by{|a| a.name } if @book == nil
 		end
 	end
 
