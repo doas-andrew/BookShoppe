@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_28_161159) do
+ActiveRecord::Schema.define(version: 2019_05_30_020359) do
 
   create_table "authors", force: :cascade do |t|
     t.string "name"
@@ -23,6 +23,19 @@ ActiveRecord::Schema.define(version: 2019_05_28_161159) do
     t.integer "author_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_books_on_author_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer "sender_id"
+    t.integer "recipient_id"
+    t.integer "trade_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipient_id"], name: "index_comments_on_recipient_id"
+    t.index ["sender_id"], name: "index_comments_on_sender_id"
+    t.index ["trade_id"], name: "index_comments_on_trade_id"
   end
 
   create_table "trade_books", force: :cascade do |t|
@@ -30,6 +43,8 @@ ActiveRecord::Schema.define(version: 2019_05_28_161159) do
     t.integer "user_book_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["trade_id"], name: "index_trade_books_on_trade_id"
+    t.index ["user_book_id"], name: "index_trade_books_on_user_book_id"
   end
 
   create_table "trades", force: :cascade do |t|
@@ -38,6 +53,8 @@ ActiveRecord::Schema.define(version: 2019_05_28_161159) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["recipient_id"], name: "index_trades_on_recipient_id"
+    t.index ["sender_id"], name: "index_trades_on_sender_id"
   end
 
   create_table "user_books", force: :cascade do |t|
@@ -45,6 +62,8 @@ ActiveRecord::Schema.define(version: 2019_05_28_161159) do
     t.integer "book_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_user_books_on_book_id"
+    t.index ["user_id"], name: "index_user_books_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

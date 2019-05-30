@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   get '/users/:id/trades' => 'users#show_trades', as: 'user_trades'
   
   resources :trades
+    resources :comments, only: [:index, :create, :destroy]
+
+
   get '/trades/:id/accept' => 'trades#accept', as: 'accept_trade'
   get '/trades/:id/decline' => 'trades#decline', as: 'decline_trade'
 
@@ -17,4 +20,6 @@ Rails.application.routes.draw do
   delete '/logout' => 'sessions#destroy', as: 'logout'
 
   get '*path' => 'sessions#index'
+
+
 end
