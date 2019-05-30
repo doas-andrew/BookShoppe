@@ -99,7 +99,7 @@ a.large_btn {
 	display: inline-block;
 	position: relative;
 	overflow-y: scroll;
-	height: 30vh; 
+	height: 30vh;
 	min-width: 100%;
 	padding: 0.5em 1em;
 	border-radius: 0.5em;
@@ -127,8 +127,8 @@ a.large_btn {
 }
 /**************************************************/
 .y-scroll {
-	overflow-y: scroll;
-	overflow-x: hidden;
+	overflow-y: auto;
+	overflow-x: auto;
 }
 
 .clearfix::after {
