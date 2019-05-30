@@ -2,48 +2,49 @@
 	<div class="view_content">
 		<h2>Update user information</h2><br>
 
-		<ul class="errors">
-			<% @user.errors.full_messages.each do |error| %>
-			  <li><%= error %></li>
-			<% end %>
-		</ul>
-
 		<%= form_for @user do |f| %>
 
-		<div style="float: left; background-color: ">
-			First name<br>
-			<%= f.text_field :first_name %><br><br>
+			<div style="float: left; background-color: ">
+				First name<br>
+				<%= f.text_field :first_name %><br><br>
 
-			Last name<br>
-			<%= f.text_field :last_name %><br><br>
+				Last name<br>
+				<%= f.text_field :last_name %><br><br>
 
-			Username<br>
-			<%= f.text_field :username %><br><br>
+				Username<br>
+				<%= f.text_field :username %><br><br>
 
-			Email Address<br>
-			<%= f.text_field :email %><br><br>
-		</div>
+				Email Address<br>
+				<%= f.text_field :email %><br><br>
+			</div>
 
-		<div style="float: left; margin-left: 5%;">
-			Password<br>
-			<%= f.password_field :password %><br><br>
+			<div style="float: left; margin-left: 5%;">
+				Password<br>
+				<%= f.password_field :password %><br><br>
 
-			Confirm password<br>
-			<%= f.password_field :password_confirmation %><br><br>
+				Confirm password<br>
+				<%= f.password_field :password_confirmation %><br><br>
 
-			Phone number<br>
-			<%= f.text_field :phone_number %><br><br>
-			
-			Address<br>
-			<%= f.text_field :address %><br><br>
-		</div>
+				Phone number<br>
+				<%= f.text_field :phone_number %><br><br>
+				
+				Address<br>
+				<%= f.text_field :address %><br><br>
+			</div>
 
-		<div style="float: left; margin-left: 10%;">
-			Profile picture<br>
-			<%= f.file_field :avatar, accept: 'image/png,image/jpeg' %><br><br>
+			<div style="float: left; margin-left: 10%;">
+				Profile picture<br>
+				<%= f.file_field :avatar, accept: 'image/png,image/jpeg' %><br><br>
 
-		<div class="clearfix"></div>
 			<%= f.submit 'Update' %>
+
+			<br><br>
+			<ul class="errors">
+				<% @user.errors.full_messages.each do |error| %>
+				  <li><%= error %></li>
+				<% end %>
+			</ul>
+
 		<% end %>
 	</div>
 </div>

@@ -44,19 +44,19 @@
 
     <form method="GET" action="<%= books_path %>" class="form-inline my-2 my-lg-0">
       <input name="search" class="form-control mr-sm-2" type="search" placeholder="Find a book" aria-label="Search">
-      <button class="btn blue_btn my-2 my-sm-0" type="submit">Search <i class="cui-magnifying-glass"></i></button>
+      <button class="btn blue_btn " type="submit"><i class="search icon"></i> Search</button>
     </form>
 
     <!-- Forgive me CSS gods, for I have sinned greatly. -->
-    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
 
     <% if user_signed_in? %>
       <%= link_to 'Logout', logout_path, class: 'btn red_btn', method: :delete %>
     <% else %>
-      <%= link_to 'Login', login_path, class: 'btn btn-outline-success' %>&nbsp &nbsp
+      <%= link_to 'Login', login_path, class: 'btn btn-outline-success' %>&nbsp &nbsp &nbsp
       <%= link_to 'Sign Up', new_user_path, class: 'btn btn-outline-success' %>
     <% end %>
-    
+    &nbsp &nbsp &nbsp
   </div>
 </nav>

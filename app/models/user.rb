@@ -41,12 +41,13 @@ class User < ApplicationRecord
   	presence: true,
   	format: {with: PHONE_REGEX},
 		uniqueness: true
-	}									
+	}                  
 
-	validates :password, {length: {is: 3}, allow_blank: true}
-	
+  validates :password, {
+    length: {minimum: 3},
+    allow_blank: true
+  }
 
-	
 	def full_name
 		[self.first_name, ' ', self.last_name].join
 	end
@@ -67,12 +68,16 @@ class User < ApplicationRecord
 		Trade.all.select {|t| (t.sender == self || t.recipient == self) &&  t.status == 'completed'}
 	end
 
-	def inventory
-		h = {}
-		self.books.each { |book|
-  		h[book.slug] ||= 0
-  		h[book.slug]  += 1
-		}
-		return h
-	end
+  def inventory
+    inv = {}
+    self.books.each { |book|
+      inv[book.slug] ||= 0
+      inv[book.slug]  += 1
+    }
+    return inv
+  end
+
+  def find_ub_by_slug(slug)
+    self.user_books.select {|ub| ub.book.slug == slug }
+  end
 end

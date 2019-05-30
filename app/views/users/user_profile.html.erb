@@ -13,7 +13,7 @@
 			<% if @user == current_user %>
 				<div class="btn-group-vertical btn-group-lg" style="width:100%; "align="left">
 					<%= link_to "Edit profile", edit_user_path, class: "btn btn-secondary" %>
-					<%= link_to "Delete my profile", user_path, method: :delete, data: {confirm: "Are you sure you want to delete your profile? This can't be undone!"}, class: "btn btn-secondary" %>
+					<%= link_to "Delete my profile", user_path, method: :delete, data: {confirm: "Are you sure you want to delete your profile?\nAll of your active trades will be canceled.\n\nThis can't be undone. "}, class: "btn btn-secondary" %>
 				</div>
 			<% end %>
 		</div>
@@ -21,20 +21,22 @@
 		<div id="inventory" align="center" class="col">
 			<br>
 			<h1><%= @user.username %>'s books</h1><br>
-			<font size="3">
+
+			<font size="4">
 				<% if @user.inventory.size == 0 %>
-					This user does not have any book to trade.
+					<%= @user == current_user ? "You don't have any books to trade." : "This user does not have any books to trade." %><br><br>
 				<% else %>
 					<% @user.inventory.each do |slug, num| %>
 						<%= num %>x <%= slug %><br>
 					<% end %><br>
-					<% if @user != current_user %>
-						<%= link_to 'Propose a trade with this user.', new_trade_path+"?id=#{@user.id}" ,class: 'btn blue_btn' %>
-					<% else %>
-						<%= link_to 'Add another book to your collection.', new_book_path ,class: 'btn blue_btn' %>
-					<% end %>
 				<% end %>
 			</font>
+
+			<% if @user != current_user %>
+				<a href="<%= new_trade_path+"?id=#{@user.id}" %>" class="btn blue_btn large_btn">Propose a trade with this user <i class="book icon"></i></a>
+			<% else %>
+				<a href="<%= new_book_path %>" class="btn blue_btn large_btn">Add a book to your collection <i class="book icon"></i></a>
+			<% end %>
 		</div>
 </div>
 </div>

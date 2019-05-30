@@ -3,18 +3,22 @@
 		<h1>New Trade with <%= @recipient.username %></h1><br><br>
 
 		<%= form_tag trades_path do %>
-			<%= hidden_field_tag 'recipient_id', params[:id] %>
+			<%= hidden_field_tag 'trade[sender_id]', current_user.id %>
+			<%= hidden_field_tag 'trade[recipient_id]', params[:id] %>
+			<%= hidden_field_tag 'trade[status]', 'pending' %>
 
 			<h3>Offer</h3>
 			<font size="4">
+			<%= "You don't have any books to trade." if current_user.inventory.count == 0 %>
 			<% current_user.inventory.each do |slug, num| %>
-				<%= number_field_tag 'trade[sender_books][]', 0, in: 0..num %> <%= slug %><br>
-			<% end %></font><br><br><br><br>
+				<%= number_field_tag "sender_books[#{slug}]", 0, in: 0..num %> <%= slug %><br>
+			<% end %></font><br><br><hr><br>
 
 			<h3><%= @recipient.username %>'s books</h3>
 			<font size="4">
+			<%= "This user does not have any books to trade." if @recipient.inventory.count == 0 %>
 			<% @recipient.inventory.each do |slug, num| %>
-				<%= number_field_tag 'trade[sender_books][]', 0, in: 0..num %> <%= slug %><br>
+				<%= number_field_tag "recipient_books[#{slug}]", 0, in: 0..num %> <%= slug %><br>
 			<% end %></font><br><br>
 
 			<input type="submit" value="Request Trade">

@@ -14,6 +14,8 @@
 		<%= 'None' if @user.inc_trades.count == 0 %>
 		<% @user.inc_trades.each do |trade| %>
 			<%= link_to [trade.created_at.strftime('%D'), ' - Trade with ', trade.sender.username].join	, trade_path(trade) %><br>
-		<% end %></font></ul><hr>
+		<% end %></font></ul><hr><br>
+
+		<a class="btn blue_btn large_btn" href="<%= user_path(current_user) %>"><i class="arrow left icon"></i> Previous</a>
 	</div>
 </div>

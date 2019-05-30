@@ -21,4 +21,5 @@ User.create(first_name: 'Andrew', last_name: 'Allen', username: 'ASA', email: '2
 User.create(first_name: 'Jaehyun', last_name: 'Park', username: 'Jae', email: 'jae@test.com', password: '123', phone_number: '5551234567', address: '[address here]').user_books << [UserBook.create(book: Book.all[2]), UserBook.create(book: Book.all[2]), UserBook.create(book: Book.all[3])]
 User.create(first_name: 'Scott', last_name: 'Toney', username: 'Scott', email: 'scott@test.com', password: '123', phone_number: '5556782222', address: '[address here]').user_books << [UserBook.create(book: Book.all[1]), UserBook.create(book: Book.all[3])]
 
-Trade.create(sender: User.all[0], recipient: User.all[1], status: 'pending').trade_books << [TradeBook.create(user_book: UserBook.all[0]), TradeBook.create(user_book: UserBook.all[1]), TradeBook.create(user_book: UserBook.all[2]), ]
+Trade.create(sender: User.all[0], recipient: User.all[1], status: 'pending').trade_books << [TradeBook.create(user_book: UserBook.all[0]), TradeBook.create(user_book: UserBook.all[1]), TradeBook.create(user_book: UserBook.all[2])]
+Trade.create(sender: User.all[1], recipient: User.all[0], status: 'pending').trade_books << [TradeBook.create(user_book: UserBook.all[0]), TradeBook.create(user_book: UserBook.all[1]), TradeBook.create(user_book: UserBook.all[2])]

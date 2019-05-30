@@ -18,10 +18,8 @@
 	font-family: 'Raleway', sans-serif;
 }
 
-.clearfix::after {
-  content: '';
-  clear: both;
-  display: table;
+a.large_btn {
+	font-size: 1.1em;
 }
 
 /**************************************************/
@@ -40,6 +38,7 @@
 }
 
 .errors {
+	position: absolute;
 	display: inline;
 	float: right;
 	color: red;
@@ -47,4 +46,10 @@
 /**************************************************/
 .y-scroll {
 	overflow-y: scroll;
+}
+
+.clearfix::after {
+  content: '';
+  clear: both;
+  display: table;
 }

@@ -1,6 +1,6 @@
 <div class="view y-scroll">
 	<div class="view_content">
-		<h1>Book Search</h1><br>
+		<h1>Book Search</h1>
 
 		<!-- display all books -->
 		<% if @books %>
@@ -15,10 +15,10 @@
 			<h3><%= @book.slug %></h3>
 			<font size="3" style="margin-left: 1%;"><%= user_search_count(@book.users.uniq.count) %></font><br><br>
 
-			<h3 style="margin-left: 2%;">
+			<div style="margin-left: 2%;">
 			<% @book.users.uniq.each do |user| %>
-				<%= link_to user.username, user_path(user) %><br><br>
-			<% end %></h3>
+				<a href="<%= user_path(user) %>" class="btn blue_btn large_btn"><i class="user icon"></i> <%= user.username %></a><br><br>
+			<% end %></div>
 
 		<!-- display author's books -->
 		<% elsif @author %><br><hr>

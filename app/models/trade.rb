@@ -6,6 +6,27 @@ class Trade < ApplicationRecord
   has_many :user_books, through: :trade_books
   has_many :books, through: :user_books
 
+  def create_tbs(sender_books={}, recipient_books={})
+    sender_books.each { |slug, num|
+      count = num.to_i
+      self.sender.find_ub_by_slug(slug).each { |ub|
+        if count > 0
+          self.trade_books << TradeBook.create(user_book_id: ub.id)
+          count -= 1
+        end
+      }
+    }
+    recipient_books.each { |slug, num|
+      count = num.to_i
+      self.recipient.find_ub_by_slug(slug).each { |ub|
+        if count > 0
+          self.trade_books << TradeBook.create(user_book_id: ub.id)
+          count -= 1
+        end
+      }
+    }
+  end
+
   def sender_tb
   	self.trade_books.select {|tb| tb.user_book.user == self.sender }
   end
