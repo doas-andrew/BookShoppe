@@ -2,6 +2,10 @@ class TradesController < ApplicationController
 
 	before_action :set_trade, only: [:show, :accept, :complete, :destroy, :undo]
 
+	def index
+		@trades = Trade.all
+	end
+
 	def show
 		if current_user == @trade.sender
 			if @trade.status == 'pending'

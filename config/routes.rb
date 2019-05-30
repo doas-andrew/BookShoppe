@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   root "sessions#index"
 
   resources :books, only: [:index, :new, :create]
+  
+  resources :comments, only: [:index, :create, :destroy]
 
   resources :users, except: [:index]
   get '/users/:id/trades' => 'users#show_trades', as: 'user_trades'
@@ -18,4 +20,6 @@ Rails.application.routes.draw do
   delete '/logout' => 'sessions#destroy', as: 'logout'
 
   get '*path' => 'sessions#index'
+
+
 end
