@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   resources :users, except: [:index]
   get '/users/:id/trades' => 'users#show_trades', as: 'user_trades'
   
-  resources :trades
+  resources :trades do
     resources :comments, only: [:index, :create, :destroy]
-
+  end
 
   get '/trades/:id/accept' => 'trades#accept', as: 'accept_trade'
   get '/trades/:id/decline' => 'trades#decline', as: 'decline_trade'
