@@ -17,7 +17,6 @@
 *{
 	font-family: 'Raleway', sans-serif;
 }
-
 a.large_btn {
 	font-size: 1.1em;
 }
@@ -52,7 +51,7 @@ a.large_btn {
 	margin-top: 1%;
 	margin-left: 15%;
 	margin-right: 15%;
-	height: 90vh;
+	height: 92vh;
 	background-color: #F1F3F5;
 }
 
@@ -89,6 +88,7 @@ a.large_btn {
 /**************************************************/
 .y-scroll {
 	overflow-y: scroll;
+	overflow-x: hidden;
 }
 
 .clearfix::after {
