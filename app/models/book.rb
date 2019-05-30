@@ -3,9 +3,7 @@ class Book < ApplicationRecord
 	has_many :user_books
 	has_many :users, through: :user_books
 
-	validates :title, { presence: true,
-  										length: {maximum: 50}
-  									}
+	validates :title, { presence: true }
 	before_save { self.title = self.title.downcase }
 
 	def slug

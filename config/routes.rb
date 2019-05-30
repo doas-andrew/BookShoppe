@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root "sessions#index"
 
   resources :books, only: [:index, :new, :create]
-  resources :comments, only: :create
+  resources :comments, only: [:create, :destroy]
 
   resources :users, except: [:index]
   get '/users/:id/trades' => 'users#show_trades', as: 'user_trades'

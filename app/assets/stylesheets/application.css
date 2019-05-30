@@ -66,7 +66,7 @@ a.large_btn {
 	position: absolute;
 	display: inline;
 	float: right;
-	color: red;
+	color: #BB2525;
 }
 /**************************************************/
 #waiting {
@@ -124,6 +124,10 @@ a.large_btn {
 }
 #chatbox input::placeholder {
 	text-align: center;
+}
+#delete_comment {
+	align-self: left;
+	color: #red;
 }
 /**************************************************/
 .y-scroll {
