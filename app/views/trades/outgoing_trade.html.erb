@@ -1,18 +1,19 @@
 <div class="view">
 	<div class="view_content">
-		<h1><%= @trade.created_at.strftime('%D') %> - Trade with <%= link_to @trade.recipient.full_name, user_path(@trade.recipient) %></h1><br>
+		
+		<h1><%= @trade.created_at.strftime('%D') %> - Trade with <%= link_to @trade.recipient.full_name, user_path(@trade.recipient) %></h1><hr><br>
 
-		<h3>You have requested to trade the following book(s):</h3>
-		<font size="4">
+		<h3>You have requested to trade the following books</h3>
+		<ul><font size="4">
 		<% @trade.sender_hash.each do |slug, num| %>
-				<%= [num, 'x  ', slug].join %><br>
-		<% end %></font><br>
+				<%= [num, 'x ', slug].join %><br>
+		<% end %></font></ul><br><br>
 
-		<h3>For <%= @trade.recipient.first_name %>'s:</h3>
-		<font size="4">
+		<h3>For <%= @trade.recipient.first_name %>'s</h3>
+		<ul><font size="4">
 		<% @trade.recipient_hash.each do |slug, num| %>
-			<%= [num, 'x  ', slug].join %><br>
-		<% end %></font><br>
+			<%= [num, 'x ', slug].join %><br>
+		<% end %></font></ul><br><hr><br>
 
 
 		<div class="btn-group-lg">

@@ -16,10 +16,22 @@ Author.create(name: 'Dr. Seuss').books << [Book.create(title: 'Green Eggs and Ha
 Author.create(name: 'Miguel de Cervantes').books << [Book.create(title: 'Don Quixote')]
 Author.create(name: 'Larry McMurtry').books << [Book.create(title: 'Lonesome Dove')]
 Author.create(name: 'Marcel Proust').books << [Book.create(title: 'In Search of Lost Time')]
+Author.create(name: 'Czeslaw Milosz').books << [Book.create(title: 'Unattainable Earth')]
+Author.create(name: 'Ayn Rand').books << [Book.create(title: 'Atlas Shrugged')]
+Author.create(name: 'Harper Lee').books << [Book.create(title: 'To Kill a Mockingbird')]
+Author.create(name: 'Jane Austen').books << [Book.create(title: 'Pride and Prejuidice')]
+Author.create(name: 'Markus Zusak').books << [Book.create(title: 'The Book Thief')]
+Author.create(name: 'William Shakespeare').books << [Book.create(title: 'Romeo and Juliet')]
+Author.create(name: 'Shel Silverstein').books << [Book.create(title: 'The Giving Tree')]
+Author.create(name: 'Margaret Mitchell').books << [Book.create(title: 'Gone with the Wind')]
+Author.create(name: 'George Orwell').books << [Book.create(title: '1984'), Book.create(title: 'Animal Farm')]
 
 User.create(first_name: 'Andrew', last_name: 'Allen', username: 'ASA', email: '2@2.w', password: '123', phone_number: '1234567890', address: '[address here]').user_books.create(book: Book.all[0])
 User.create(first_name: 'Jaehyun', last_name: 'Park', username: 'Jae', email: 'jae@test.com', password: '123', phone_number: '5551234567', address: '[address here]').user_books << [UserBook.create(book: Book.all[2]), UserBook.create(book: Book.all[2]), UserBook.create(book: Book.all[3])]
-User.create(first_name: 'Scott', last_name: 'Toney', username: 'Scott', email: 'scott@test.com', password: '123', phone_number: '5556782222', address: '[address here]').user_books << [UserBook.create(book: Book.all[1]), UserBook.create(book: Book.all[3])]
+scott = User.create(first_name: 'Scott', last_name: 'Toney', username: 'Scott', email: 'scott@test.com', password: '123', phone_number: '5556782222', address: '[address here]')
 
-Trade.create(sender: User.all[0], recipient: User.all[1], status: 'pending').trade_books << [TradeBook.create(user_book: UserBook.all[0]), TradeBook.create(user_book: UserBook.all[1]), TradeBook.create(user_book: UserBook.all[2])]
+Book.all.each do |book|
+	scott.user_books << UserBook.create(book: book)
+end
+
 Trade.create(sender: User.all[1], recipient: User.all[0], status: 'pending').trade_books << [TradeBook.create(user_book: UserBook.all[0]), TradeBook.create(user_book: UserBook.all[1]), TradeBook.create(user_book: UserBook.all[2])]

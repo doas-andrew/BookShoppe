@@ -58,12 +58,16 @@ class User < ApplicationRecord
   end
 
 	def inc_trades
-		Trade.all.select {|t| t.recipient == self }
+		Trade.all.select {|t| t.recipient == self  && t.status == 'pending' }
 	end
 
-	def out_trades
-		Trade.all.select {|t| t.sender == self }
-	end
+  def out_trades
+    Trade.all.select {|t| t.sender == self && t.status == 'pending' }
+  end
+
+  def accepted_trades
+    Trade.all.select {|t| (t.sender == self || t.recipient == self) &&  t.status == 'accepted'}
+  end
 
 	def completed_trades
 		Trade.all.select {|t| (t.sender == self || t.recipient == self) &&  t.status == 'completed'}

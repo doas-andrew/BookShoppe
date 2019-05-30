@@ -51,6 +51,8 @@ ActiveRecord::Schema.define(version: 2019_05_30_020359) do
     t.integer "sender_id"
     t.integer "recipient_id"
     t.string "status"
+    t.boolean "sender_complete", default: false
+    t.boolean "recipient_complete", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["recipient_id"], name: "index_trades_on_recipient_id"
