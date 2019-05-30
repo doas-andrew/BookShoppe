@@ -1,24 +1,25 @@
-<div class="view">
-	<div class="view_content">
-		<h1>New Book</h1>
-
-		<ul class="errors" style="margin-right: 30%">
-			<% @book.errors.full_messages.each do |error| %>
-			  <li><%= error %></li>
-			<% end %>
-			<% @author.errors.full_messages.each do |error| %>
-			  <li>Author can't be blank</li>
-			<% end %>
-		</ul>
+<div class="new-book-view">
+	<div class="new-book-content">
+		<h1>Add A New Book</h1>
 
 		<%= form_tag books_path do %>
 			Title<br>
-			<input type="text" name="book_title"><br><br>
+			<input type="text" name="book_title" class="form_tag_text_box"><br><br>
 
 			Author<br>
-			<input type="text" name="author_name"><br><br>
+			<input type="text" name="author_name" class="form_tag_text_box"><br><br>
 
-			<input type="submit" value="Add book">
+			<input type="submit" value="Add Book">
 		<% end %>
+			<br>
+		<div class="new-book-error">
+			<% @book.errors.full_messages.each do |error| %>
+				<b><%= error %></b><br>
+			<% end %>
+			<% @author.errors.full_messages.each do |error| %>
+				<b>Author can't be blank</b>
+			<% end %>
+		</div>
+
 	</div>
 </div>

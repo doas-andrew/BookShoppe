@@ -1,7 +1,9 @@
 <div class="view y-scroll">
 	<div class="view_content">
 
-		<h1><%= @trade.created_at.strftime('%D') %> - Trade with <%= link_to @trade.sender.full_name, user_path(@trade.sender) %></h1><hr><br>
+		<h1>Trade with <%= link_to @trade.sender.full_name, user_path(@trade.sender) %></h1>
+		<h4>Trade initiated on: <%= @trade.created_at.strftime('%D') %></h4>
+		<hr><br>
 
 		<h3><%= @trade.sender.first_name %> has requested to trade the following books</h3>
 		<ul><font size="4">
@@ -19,7 +21,7 @@
 			<%= link_to 'Accept', accept_trade_path, method: :patch, data: {confirm: "Are you sure you want to accept this trade?\nYour shipping address will be sent to #{@trade.sender.first_name}."}, class: "btn btn-secondary" %>
 			<%= link_to 'Decline', trade_path, method: :delete, data: {confirm: 'Are you sure you want to decline this trade?'}, class: "btn btn-secondary" %><br><br>
 		</div>
-		<a class="btn blue_btn large_btn" href="<%= user_trades_path(current_user) %>"><i class="arrow left icon"></i> Previous</a>
+		<a class="btn blue_btn large_btn" href="<%= user_trades_path(current_user) %>"><i class="arrow left icon"></i> View All Trades</a>
 	</div>
 	<%= render 'layouts/chatbox' %>
 </div>

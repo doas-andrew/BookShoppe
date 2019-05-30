@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get '/trades/:id/undo' => 'trades#undo'
 
   get '/login' => 'sessions#new', as: 'login'
-  post '/login' => 'sessions#create' 
+  post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy', as: 'logout'
 
   get '*path' => 'sessions#index'

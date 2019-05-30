@@ -4,14 +4,31 @@
 
 	max-width: 35%;
 	max-height: 35%;
+	padding-top: 1.5vw;
 }
 
 #avatar {
   max-width: 100%;
   max-height: 100%;
+	border-radius: 5px;
 }
 
 #inventory {
 	max-width: 55%;
-	margin-top: 10%;
+	margin-top: 7%;
+}
+
+.inventory-scroll {
+	overflow-y: auto;
+	height: 60vh;
+}
+
+.users-books {
+	text-align:left;
+	margin-left: 10%;
+	font-weight: bold;
+}
+
+.book-list-line-height {
+	line-height: 160%;
 }

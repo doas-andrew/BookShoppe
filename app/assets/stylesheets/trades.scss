@@ -1,3 +1,15 @@
 // Place all the styles related to the trades controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.new-trade-view {
+	margin: 5% 15%;
+	padding: 5%;
+  background-color: #F1F3F5;
+  border-radius: 15px;
+}
+
+.new-trade-scroll {
+	overflow-y: auto;
+	height: 60vh;
+}
