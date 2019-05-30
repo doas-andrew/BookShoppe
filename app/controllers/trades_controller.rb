@@ -72,12 +72,13 @@ class TradesController < ApplicationController
 		redirect_to user_trades_path(current_user)
 	end
 
-	# destroys all related trade_books
+	# destroys all related trade_books and comments
 	# related user_books are left untouched
 	def destroy
 		redirect_if_not_logged_in
 		if current_user == @trade.sender || current_user == @trade.recipient
 			@trade.trade_books.each(&:destroy)
+			@trade.comments.each(&:destroy)
 			@trade.destroy
 			redirect_to user_trades_path(current_user)
 		else

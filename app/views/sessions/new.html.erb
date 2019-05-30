@@ -10,9 +10,9 @@
 	<% end %>
 
 	<%= form_tag login_path do %>
-		<input class="ff_box" type="text" name="user" placeholder=" Username or Email" value="<%= params[:user] %>"><br><br>
-		<input class="ff_box" type="password" name="password" placeholder=" Password"><br><br>
-		<input type="submit" value="Login">
+			<input placeholder=" Username or Email" onfocus="this.placeholder = '' " onblur="this.placeholder = ' Username or Email' " class="ff_box" type="text" name="user" value="<%= params[:user] %>"><br><br>
+			<input placeholder=" Password" onfocus="this.placeholder = '' " onblur="this.placeholder = ' Password' " class="ff_box" type="password" name="password"><br><br>
+		<input type="submit" value="Enter" class="btn btn-outline-success">
 	<%end%>
 
 </div>
