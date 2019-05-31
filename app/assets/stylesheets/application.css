@@ -47,10 +47,21 @@ a.large_btn {
   color: #8B5E3C;
 }
 /**************************************************/
-.view {
+
+/* .view {
 	margin-top: 1%;
 	margin-left: 15%;
 	margin-right: 15%;
+	height: 88vh;
+	background-color: #F1F3F5;
+	border-radius: 5px;
+} */
+
+.view {
+	margin-top: 1%;
+	margin-left: auto;
+	margin-right: auto;
+	width: 75%;
 	height: 88vh;
 	background-color: #F1F3F5;
 	border-radius: 5px;
@@ -127,7 +138,7 @@ a.large_btn {
 }
 #delete_comment {
 	align-self: left;
-	color: #red;
+	color: red;
 }
 /**************************************************/
 .y-scroll {
