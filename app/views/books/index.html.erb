@@ -1,14 +1,16 @@
-<div class="view y-scroll">
+<div class="view">
 	<div class="view_content">
 		<h1>Book Search</h1>
 
 		<!-- display all books -->
 		<% if @books %>
 			<font size="3"><br>These are all of the books in our system:</font><hr>
-			<% @books.each do |book| %>
-				<h3><%= link_to book.slug, books_path+"?search=#{book.title}" %></h3>
-				<font size="3" style="margin-left: 1%;"><%= user_search_count(book.users_with_available_ub.count) %></font><br><br><br>
-			<% end %>
+			<div class="book-index-scroll">
+				<% @books.each do |book| %>
+					<h3><%= link_to book.slug, books_path+"?search=#{book.title}" %></h3>
+					<font size="3" style="margin-left: 1%;"><%= user_search_count(book.users_with_available_ub.count) %></font><br><br><br>
+				<% end %>
+			</div>
 
 		<!-- display one book -->
 		<% elsif @book %><br><hr>
@@ -21,17 +23,20 @@
 			<% end %></div>
 
 		<!-- display author's books -->
-		<% elsif @author %><br><hr>
-			<h3>Books written by <%= @author.name.titleize %>:</h3><br>
-			<% @author.books.each do |book| %>
-				<h3><%= link_to book.slug, books_path+"?search=#{book.title}" %></h3>
-				<font size="3" style="margin-left: 1%;"><%= user_search_count(book.users_with_available_ub.count) %></font><br><br><br>
-			<% end %>
+		<% elsif @author %><br>
+			<h3>Books written by <%= @author.name.titleize %>:</h3><hr><br>
+			<div class="book-index-scroll">
+				<% @author.books.each do |book| %>
+					<h3><%= link_to book.slug, books_path+"?search=#{book.title}" %></h3>
+					<font size="3" style="margin-left: 1%;"><%= user_search_count(book.users_with_available_ub.count) %></font><br><br><br>
+				<% end %>
+			</div>
 			
 		<!-- display no books -->
 		<% else %>
 			<font size="3">We couldn't find any books in our system based on your search criteria.</font><hr>
 
 		<% end %>
+
 	</div>
 </div>
