@@ -5,7 +5,7 @@
 			<h1 align="center"><%= @user.full_name %></h1>
 				<br>
 			<% if @user.avatar.url.nil? %>
-				<img id="avatar" src="https://i.imgur.com/aO27nat.jpg">
+				<img id="avatar" src="<%= image_path('default_avatar.jpg') %>">
 			<% else %>
 				<img id="avatar" src="<%= @user.avatar.url %>">
 			<% end %>

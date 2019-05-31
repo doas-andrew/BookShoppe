@@ -8,19 +8,9 @@ class TradesController < ApplicationController
 
 	def show
 		if current_user == @trade.sender
-			if @trade.status == 'pending'
-				render :outgoing_trade
-			elsif @trade.status == 'accepted'
-				render :sender_accepted_trade
-			end
-
+			@trade.status == 'pending' ? render :outgoing_trade : render :sender_accepted_trade
 		elsif current_user == @trade.recipient
-			if @trade.status == 'pending'
-				render :incoming_trade
-			elsif @trade.status == 'accepted'
-				render :recipient_accepted_trade
-			end
-
+			@trade.status == 'pending' ? render :incoming_trade : render :recipient_accepted_trade			
 		else
 			render_403
 		end

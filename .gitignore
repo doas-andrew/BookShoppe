@@ -25,7 +25,7 @@
 /yarn-error.log
 
 # Ignore uploaded avatars
-/public/uploads/user/avatar/*
+/public/uploads*
 
 /public/assets
 .byebug_history

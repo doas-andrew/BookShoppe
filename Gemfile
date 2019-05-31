@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem 'pry'
 
-# db/book_seeds.rb
+# used in db/book_seeds.rb
 gem 'faker'
 
 gem 'carrierwave'

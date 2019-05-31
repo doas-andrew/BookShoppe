@@ -1,12 +1,12 @@
 class CommentsController < ApplicationController
 
   def create
-    Comment.create(comment_params) if !params[:comment][:content].empty?
+    Comment.create(comment_params) if params[:comment][:content].any?
     redirect_to trade_path(params[:comment][:trade_id])
   end
 
+  # currently unused
   def destroy
-  	# byebug
   	@comment = Comment.find(params[:id])
   	path = trade_path(@comment.trade)
   	@comment.destroy

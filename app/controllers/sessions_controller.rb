@@ -14,12 +14,12 @@ class SessionsController < ApplicationController
   def create
     @user   = User.find_by(email: params[:user].downcase)
     @user ||= User.find_by(login_name: params[:user].downcase)
-    @login_failed = false
+
     if @user && @user.authenticate(params[:password])
       login @user
       redirect_to :root
     else
-      @login_failed = true
+      session[:login_failed] = true
       render :new
     end
   end
