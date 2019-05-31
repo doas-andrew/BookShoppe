@@ -1,0 +1,46 @@
+<div class="view">
+	<div class="new-user-view-content">
+		<h1 class="new-user-h1">Join <font color="#8B5E3C"><b>Book</b></font>Shoppe</h1><br>
+
+		<div class="row">
+			<div class="col">
+				<%= form_for @user do |f| %>
+				<%= render "shared/error_messages", :target => @user %>
+
+					First Name<br>
+					<%= f.text_field :first_name, class: "new-user-text-box"  %><br><br>
+
+					Last Name<br>
+					<%= f.text_field :last_name, class: "new-user-text-box"  %><br><br>
+
+					Email Address<br>
+					<%= f.text_field :email, class: "new-user-text-box"  %><br><br>
+
+					Username<br>
+					<%= f.text_field :username, class: "new-user-text-box"  %><br><br>
+				<% end %>
+			</div>
+
+			<div class="col">
+				<%= form_for @user do |f| %>
+					Password<br>
+					<%= f.password_field :password, class: "new-user-text-box" %><br><br>
+
+					Confirm Password<br>
+					<%= f.password_field :password_confirmation, class: "new-user-text-box"  %><br><br>
+
+					Phone Number<br>
+					<%= f.text_field :phone_number, class: "new-user-text-box"  %><br><br>
+
+					Address<br>
+					<%= f.text_field :address, class: "new-user-text-box"  %><br><br>
+			</div>
+		</div>
+
+					<div align="center">
+						<%= f.submit 'Sign Up' %>
+					</div>
+				<% end %>
+
+	</div>
+</div>

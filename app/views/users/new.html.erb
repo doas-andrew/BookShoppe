@@ -1,45 +1,45 @@
 <div class="view">
-	<div class="view_content">
-		<h2>Join BookShoppe</h2><br>
+	<div class="new-user-view-content">
+		<h1>Join <font color="#8B5E3C"><b>Book</b></font>Shoppe</h1><br>
 
-		<ul class="errors" style="margin-right: 10%;">
+		<ul class="new-user-errors">
 			<% @user.errors.full_messages.each do |error| %>
 			  <li><%= error %></li>
 			<% end %>
 		</ul>
 
 		<%= form_for @user do |f| %>
-			<div style="float: left; background-color: ">
-				First name<br>
-				<%= f.text_field :first_name %><br><br>
+			<div class="new-user-cols" style="float: left; background-color: ">
+				First Name<br>
+				<%= f.text_field :first_name, :class => "new-user-text-box" %><br><br>
 
-				Last name<br>
-				<%= f.text_field :last_name %><br><br>
+				Last Name<br>
+				<%= f.text_field :last_name, :class => "new-user-text-box" %><br><br>
 
 				Email Address<br>
-				<%= f.text_field :email %><br><br>
+				<%= f.text_field :email, :class => "new-user-text-box" %><br><br>
 
 				Username<br>
-				<%= f.text_field :username %><br><br>
+				<%= f.text_field :username, :class => "new-user-text-box" %><br><br>
 			</div>
 
-			<div style="float: left; margin-left: 5%;">
+			<div class="new-user-cols" style="float: left; margin-left: 5%;">
 
 				Password<br>
-				<%= f.password_field :password %><br><br>
+				<%= f.password_field :password, :class => "new-user-text-box" %><br><br>
 
-				Confirm password<br>
-				<%= f.password_field :password_confirmation %><br><br>
+				Confirm Password<br>
+				<%= f.password_field :password_confirmation, :class => "new-user-text-box" %><br><br>
 
-				Phone number<br>
-				<%= f.text_field :phone_number %><br><br>
-				
+				Phone Number<br>
+				<%= f.text_field :phone_number, :class => "new-user-text-box" %><br><br>
+
 				Address<br>
-				<%= f.text_field :address %><br><br>
+				<%= f.text_field :address, :class => "new-user-text-box" %><br><br>
 			</div>
 
 			<div class="clearfix"></div>
-			<%= f.submit 'Sign up' %>
+			<%= f.submit 'Sign Up' %>
 		<% end %>
 	</div>
 </div>
