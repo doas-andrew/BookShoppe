@@ -16,8 +16,8 @@ class BooksController < ApplicationController
 
 	def create
 		ActiveRecord::Base.transaction do
-			@author = Author.find_or_create_by(name: params[:author_name])
-			@book = Book.find_or_create_by(title: params[:book_title], author: @author)
+			@author = Author.find_or_create_by(name: params[:author_name].downcase)
+			@book = Book.find_or_create_by(title: params[:book_title].downcase, author: @author)
     	raise ActiveRecord::Rollback if @author.errors.any? || @book.errors.any?
   	end
 

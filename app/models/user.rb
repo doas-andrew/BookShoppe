@@ -87,7 +87,7 @@ class User < ApplicationRecord
   # now only returns UserBooks that are available
   def inventory
     inv = {}
-    self.user_books.select{|ub| ub.trades.select{|t| t.status == 'accepted' }.empty? }.each do |ub|
+    self.user_books.select{|ub| ub.available? }.each do |ub|
       inv[ub.book.slug] ||= 0
       inv[ub.book.slug]  += 1
     end

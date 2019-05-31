@@ -12,6 +12,6 @@ class Book < ApplicationRecord
 	end
 
 	def users_with_available_ub
-		self.user_books.select {|ub| ub.trade_books.reject{|tb| tb.trade.status == 'accepted' }.any? || ub.trade_books.count == 0 }.map(&:user).uniq
+		self.user_books.select{|ub| ub.available? }.map(&:user).uniq
 	end
 end
