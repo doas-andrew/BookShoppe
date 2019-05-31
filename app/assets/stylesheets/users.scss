@@ -32,3 +32,43 @@
 .book-list-line-height {
 	line-height: 160%;
 }
+
+.new-user-text-box {
+	width: 100%;
+	min-width: 200px;
+}
+
+.new-user-errors {
+	display: inline;
+	float: right;
+	font-weight: bold;
+	color: #BB2525;
+	width: 250px;
+}
+
+.new-user-view-content {
+	padding-top: 5%;
+	padding-left: 10%;
+	padding-right: 10%;
+	// position: static;
+}
+
+.new-user-submit {
+	margin-left: auto;
+	margin-right: auto;
+	width: 300px;
+}
+
+.new-user-errors {
+	position: relative !important;
+	display: inline-block !important;
+	float: center;
+	color: #BB2525;
+	width: auto;
+}
+
+.new-user-cols {
+	width: 28%;
+	line-height: 18px !important;
+	// max-height: 10vh;
+}
