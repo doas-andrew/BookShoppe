@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
 
   def create
-    Comment.create(comment_params) if params[:comment][:content].any?
+    Comment.create(comment_params) if params[:comment][:content]
     redirect_to trade_path(params[:comment][:trade_id])
   end
 
