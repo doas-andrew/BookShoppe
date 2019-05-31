@@ -9,38 +9,36 @@
 		</ul>
 
 		<%= form_for @user do |f| %>
+			<div style="float: left; background-color: ">
+				First name<br>
+				<%= f.text_field :first_name %><br><br>
 
-		<div style="float: left; background-color: ">
-			First name<br>
-			<%= f.text_field :first_name %><br><br>
+				Last name<br>
+				<%= f.text_field :last_name %><br><br>
 
-			Last name<br>
-			<%= f.text_field :last_name %><br><br>
+				Email Address<br>
+				<%= f.text_field :email %><br><br>
 
-			Email Address<br>
-			<%= f.text_field :email %><br><br>
+				Username<br>
+				<%= f.text_field :username %><br><br>
+			</div>
 
-			Username<br>
-			<%= f.text_field :username %><br><br>
+			<div style="float: left; margin-left: 5%;">
 
-		</div>
+				Password<br>
+				<%= f.password_field :password %><br><br>
 
-		<div style="float: left; margin-left: 5%;">
+				Confirm password<br>
+				<%= f.password_field :password_confirmation %><br><br>
 
-			Password<br>
-			<%= f.password_field :password %><br><br>
+				Phone number<br>
+				<%= f.text_field :phone_number %><br><br>
+				
+				Address<br>
+				<%= f.text_field :address %><br><br>
+			</div>
 
-			Confirm password<br>
-			<%= f.password_field :password_confirmation %><br><br>
-
-			Phone number<br>
-			<%= f.text_field :phone_number %><br><br>
-			
-			Address<br>
-			<%= f.text_field :address %><br><br>
-		</div>
-		<div class="clearfix"></div>
-
+			<div class="clearfix"></div>
 			<%= f.submit 'Sign up' %>
 		<% end %>
 	</div>

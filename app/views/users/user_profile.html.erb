@@ -1,9 +1,9 @@
 <div class="view">
 	<div class="row">
-		<div id="user_card" class="col">
 
-			<h1 align="center"><%= @user.full_name %></h1>
-				<br>
+		<div id="user_card" class="col">
+			<h1 align="center"><%= @user.full_name %></h1><br>
+
 			<% if @user.avatar.url.nil? %>
 				<img id="avatar" src="<%= image_path('default_avatar.jpg') %>">
 			<% else %>
@@ -15,24 +15,21 @@
 					<div class="btn-group-vertical btn-group-lg" style="width:100%;">
 						<a href="<%= edit_user_path %>" class="btn btn-secondary">Edit Profile &nbsp <i class="pencil alternate icon"></i></a>
 						<%= link_to user_path, method: :delete, data: {confirm: "Are you sure you want to delete your profile?\nAll of your active trades will be canceled.\n\nThis can't be undone. "}, class: "btn btn-secondary" do %>Delete Profile &nbsp <i class="user times icon"></i><% end %>
-					</div>
-					<br><br>
-						<a href="<%= new_book_path %>" class="btn blue_btn large_btn">Add a book to your collection <i class="book icon"></i></a>
+					</div><br><br>
+					<a href="<%= new_book_path %>" class="btn blue_btn large_btn">Add a book to your collection <i class="book icon"></i></a>
 
-				<% elsif current_user && current_user.inventory.count > 0 && @user.inventory.count > 0 %>
-				<br><br>
+				<% elsif current_user && current_user.inventory.count > 0 && @user.inventory.count > 0 %><br><br>
 					<a href="<%= new_trade_path+"?id=#{@user.id}" %>" class="btn blue_btn large_btn">Propose a trade with this user <i class="book icon"></i></a>
 				<% end %>
 			</div>
 		</div>
 
-		<div id="inventory" class="col">
-				<br>
-			<h1 class="users-books"><%= @user.username %>'s Books</h1>
-				<br>
+		<div id="inventory" class="col"><br>
+			<h1 class="users-books"><%= @user.username %>'s Books</h1><br>
 			<div class="inventory-scroll">
 				<div style="margin-left: 10%">
 					<font align="left" size="4">
+
 						<% if @user.inventory.size == 0 %>
 							<%= @user == current_user ? "You don't have any books to trade." : "This user does not have any books to trade." %><br><br>
 						<% else %>
@@ -40,6 +37,7 @@
 								<div class="book-list-line-height"><%= num %>x <%= slug %></div>
 							<% end %><br>
 						<% end %>
+
 					</font>
 				</div>
 			</div>

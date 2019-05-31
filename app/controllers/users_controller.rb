@@ -45,14 +45,13 @@ class UsersController < ApplicationController
 	end
 
 	private
+	
+	def set_user
+		@user = User.find(params[:id])
+	end
 
 	def user_params
 		params[:user][:phone_number].gsub!(/[^0-9]/, '')
 		params.require(:user).permit(:first_name, :last_name, :username, :email, :password, :password_confirmation, :phone_number, :address, :avatar)
-	end
-
-
-	def set_user
-		@user = User.find(params[:id])
 	end
 end

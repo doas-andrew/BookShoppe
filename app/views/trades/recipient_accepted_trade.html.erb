@@ -1,20 +1,25 @@
 <div class="view y-scroll">
 	<div class="view_content">
 
-		<h3>You have accepted the following trade with <%= link_to @trade.sender.full_name, user_path(@trade.sender) %></h3><hr><br>
+		<h3>You have accepted the following trade with <%= link_to @trade.sender.full_name, user_path(@trade.sender) %></h3>
+		<hr><br>
 
 		<h3><%= @trade.sender.first_name %> has requested to trade the following books</h3>
 		<ul><font size="4">
-		<% @trade.sender_hash.each do |slug, num| %>
-				<%= [num, 'x ', slug].join %><br>
-		<% end %></font></ul><br><br>
+			<% @trade.sender_hash.each do |slug, num| %>
+					<%= [num, 'x ', slug].join %><br>
+			<% end %>
+		</font></ul>
+		<br><br>
 
 		<h3>For your:</h3>
 		<ul><font size="4">
-		<font style="color: #5292DE;">Send the following books to <%= @trade.sender.first_name %>'s address at <%= @trade.sender.address %> </font><br>
-		<% @trade.recipient_hash.each do |slug, num| %>
-			<%= [num, 'x ', slug].join %><br>
-		<% end %></font></ul><br><hr><br>
+			<font style="color: #5292DE;">Send the following books to <%= @trade.sender.first_name %>'s address at <%= @trade.sender.address %></font><br>
+			<% @trade.recipient_hash.each do |slug, num| %>
+				<%= [num, 'x ', slug].join %><br>
+			<% end %>
+		</font></ul>
+		<br><hr><br>
 
 		<div class="btn-group-lg">
 			<% if @trade.sender_complete %>
@@ -26,6 +31,7 @@
 				<%= link_to 'I have recieved my books', complete_trade_path, method: :patch,  class: "btn btn-secondary" %>
 			<% end %>
 		</div><br>
+
 		<a class="btn blue_btn large_btn" href="<%= user_trades_path(current_user) %>"><i class="arrow left icon"></i> View All Trades</a>
 	</div>
 	<%= render 'layouts/chatbox' %>

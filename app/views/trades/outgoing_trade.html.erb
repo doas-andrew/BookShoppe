@@ -7,20 +7,24 @@
 
 		<h3>You have requested to trade the following books</h3>
 		<ul><font size="4">
-		<% @trade.sender_hash.each do |slug, num| %>
-				<%= [num, 'x ', slug].join %><br>
-		<% end %></font></ul><br><br>
+			<% @trade.sender_hash.each do |slug, num| %>
+					<%= [num, 'x ', slug].join %><br>
+			<% end %>
+		</font></ul>
+		<br><br>
 
 		<h3>For <%= @trade.recipient.first_name %>'s</h3>
 		<ul><font size="4">
-		<% @trade.recipient_hash.each do |slug, num| %>
-			<%= [num, 'x ', slug].join %><br>
-		<% end %></font></ul><br><hr><br>
-
+			<% @trade.recipient_hash.each do |slug, num| %>
+				<%= [num, 'x ', slug].join %><br>
+			<% end %>
+		</font></ul>
+		<br><hr><br>
 
 		<div class="btn-group-lg">
 			<%= link_to 'Cancel this trade', trade_path, method: :delete, data: {confirm: 'Are you sure you want to cancel your trade request?'}, class: "btn btn-secondary" %><br><br>
 		</div>
+
 		<a class="btn blue_btn large_btn" href="<%= user_trades_path(current_user) %>"><i class="arrow left icon"></i> View All Trades</a>
 	</div>
 	<%= render 'layouts/chatbox' %>

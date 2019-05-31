@@ -3,7 +3,6 @@
 		<h2>Update user information</h2><br>
 
 		<%= form_for @user do |f| %>
-
 			<div style="float: left; background-color: ">
 				First name<br>
 				<%= f.text_field :first_name %><br><br>
@@ -37,14 +36,15 @@
 				<%= f.file_field :avatar, accept: 'image/png,image/jpeg' %><br><br>
 
 			<%= f.submit 'Update' %>
-
-			<br><br>
-			<ul class="errors">
-				<% @user.errors.full_messages.each do |error| %>
-				  <li><%= error %></li>
-				<% end %>
-			</ul>
-
 		<% end %>
+
+				<br><br><br>
+				<ul class="errors">
+					<% @user.errors.full_messages.each do |error| %>
+					  <li><%= error %></li>
+					<% end %>
+				</ul>
+			</div>
+
 	</div>
 </div>

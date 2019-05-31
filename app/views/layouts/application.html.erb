@@ -3,12 +3,10 @@
   <head>
     <%= favicon_link_tag asset_path('/favicon.ico') %>
     <title>BookShoppe</title>
-
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= render 'layouts/css_links' %>
-
   </head>
   <body>
     <%= render 'layouts/core_navbar' %>

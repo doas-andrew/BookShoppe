@@ -11,8 +11,7 @@ class Book < ApplicationRecord
 		%Q["#{self.title.titleize}" by #{self.author.name.titleize}]
 	end
 
-	def num_available
+	def users_with_available_ub
 		self.user_books.select {|ub| ub.trade_books.reject{|tb| tb.trade.status == 'accepted' }.any? || ub.trade_books.count == 0 }.map(&:user).uniq
-		# byebug
 	end
 end

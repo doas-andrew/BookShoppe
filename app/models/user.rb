@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-
 	has_many :user_books
   has_many :trade_books, through: :user_books
 	has_many :books, through: :user_books
@@ -12,13 +11,6 @@ class User < ApplicationRecord
 	PHONE_REGEX = /\A\d{10}\z/
 	USERNAME_REGEX = /\A[a-zA-Z0-9_]*\z/i
 
-  before_save {
-  	[ self.first_name = self.first_name.capitalize,
-  		self.last_name  = self.last_name.capitalize,
-  		self.login_name = self.username.downcase,
-  		self.email      = self.email.downcase
-  	]
-  }
   validates :first_name, {
   	presence: true,
   	length: {maximum: 50}
@@ -49,6 +41,14 @@ class User < ApplicationRecord
     allow_blank: true
   }
 
+  before_save {
+    [ self.first_name = self.first_name.capitalize,
+      self.last_name  = self.last_name.capitalize,
+      self.login_name = self.username.downcase,
+      self.email      = self.email.downcase
+    ]
+  }
+
 	def full_name
 		[self.first_name, ' ', self.last_name].join
 	end
@@ -73,6 +73,8 @@ class User < ApplicationRecord
 		Trade.all.select {|t| (t.sender == self || t.recipient == self) &&  t.status == 'completed'}
 	end
 
+  # original - no longer used
+  # 
   # def inventory
   #   inv = {}
   #   self.books.each { |book|
@@ -82,6 +84,7 @@ class User < ApplicationRecord
   #   return inv
   # end
 
+  # now only returns UserBooks that are available
   def inventory
     inv = {}
     self.user_books.select{|ub| ub.trades.select{|t| t.status == 'accepted' }.empty? }.each do |ub|

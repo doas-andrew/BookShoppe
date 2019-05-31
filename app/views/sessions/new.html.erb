@@ -2,7 +2,6 @@
 
 	<h1 class="session_h1"><b>Welcome to</b></h1>
   <img class="login_logo" src="/BookShoppe_Logo_wTrans.png" alt="BookShoppe Logo">
-
 	<h3>Please log in or <%= link_to 'sign up', new_user_path %></h3><br>
 
 	<% if session[:login_failed] %>
@@ -11,9 +10,10 @@
 	<% end %><br>
 
 	<%= form_tag login_path do %>
-			<input placeholder=" Username or Email" onfocus="this.placeholder = '' " onblur="this.placeholder = ' Username or Email' " class="ff_box" type="text" name="user" value="<%= params[:user] %>"><br><br>
-			<input placeholder=" Password" onfocus="this.placeholder = '' " onblur="this.placeholder = ' Password' " class="ff_box" type="password" name="password"><br><br>
+		<input placeholder=" Username or Email" onfocus="this.placeholder = '' " onblur="this.placeholder = ' Username or Email' " class="ff_box" type="text" name="user" value="<%= params[:user] %>"><br><br>
+		
+		<input placeholder=" Password" onfocus="this.placeholder = '' " onblur="this.placeholder = ' Password' " class="ff_box" type="password" name="password"><br><br>
+
 		<input type="submit" value=" &nbsp Enter &nbsp ">
 	<%end%>
-
 </div>

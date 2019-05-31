@@ -7,16 +7,16 @@
 			<font size="3"><br>These are all of the books in our system:</font><hr>
 			<% @books.each do |book| %>
 				<h3><%= link_to book.slug, books_path+"?search=#{book.title}" %></h3>
-				<font size="3" style="margin-left: 1%;"><%= user_search_count(book.num_available.count) %></font><br><br><br>
+				<font size="3" style="margin-left: 1%;"><%= user_search_count(book.users_with_available_ub.count) %></font><br><br><br>
 			<% end %>
 
 		<!-- display one book -->
 		<% elsif @book %><br><hr>
 			<h3><%= @book.slug %></h3>
-			<font size="3" style="margin-left: 1%;"><%= user_search_count(@book.num_available.count) %></font><br><br>
+			<font size="3" style="margin-left: 1%;"><%= user_search_count(@book.users_with_available_ub.count) %></font><br><br>
 
 			<div style="margin-left: 2%;">
-			<% @book.num_available.each do |user| %>
+			<% @book.users_with_available_ub.each do |user| %>
 				<a href="<%= user_path(user) %>" class="btn blue_btn large_btn"><i class="user icon"></i> <%= user.username %></a><br><br>
 			<% end %></div>
 
@@ -25,7 +25,7 @@
 			<h3>Books written by <%= @author.name.titleize %>:</h3><br>
 			<% @author.books.each do |book| %>
 				<h3><%= link_to book.slug, books_path+"?search=#{book.title}" %></h3>
-				<font size="3" style="margin-left: 1%;"><%= user_search_count(book.num_available.count) %></font><br><br><br>
+				<font size="3" style="margin-left: 1%;"><%= user_search_count(book.users_with_available_ub.count) %></font><br><br><br>
 			<% end %>
 			
 		<!-- display no books -->
