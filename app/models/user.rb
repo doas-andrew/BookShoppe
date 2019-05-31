@@ -2,8 +2,8 @@ class User < ApplicationRecord
 	has_many :user_books
   has_many :trade_books, through: :user_books
 	has_many :books, through: :user_books
-	has_many :comments, through: :trade
-
+	has_many :comments
+  
 	mount_uploader :avatar, AvatarUploader
 	has_secure_password
 
