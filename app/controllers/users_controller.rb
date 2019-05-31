@@ -39,7 +39,6 @@ class UsersController < ApplicationController
 		@user.all_trades.each(&:destroy)
 		@user.trade_books.each(&:destroy)
 		@user.user_books.each(&:destroy)
-		@user.comments.each(&:destroy)
 		@user.destroy
 		redirect_to root_path
 	end

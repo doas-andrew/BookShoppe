@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
 
 	def index
+		params[:search] ||= ''
 		if params[:search] == ''
 			@books = Book.all.sort_by{|b| b.title }
 		else
