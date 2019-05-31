@@ -1,9 +1,20 @@
 <div id="chatbox">
 	<div id="comments">
 		<% @trade.comments.each do |c| %>
-			<%= c.created_at.strftime('%H:%M') %> - <font style="color: blue;"><%= c.user.username %></font>: <%= c.content %><br>
+
+			<div style="position: absolute;">
+				<% if current_user == c.user %>
+					<font style="font-weight: bold;"><%= link_to 'x', comment_path(c), method: :delete, class: "delete_comment" %></font>&nbsp
+				<% else %>
+					&nbsp &nbsp
+				<% end %>
+
+				<%= c.created_at.strftime('%H:%M') %> - <font style="color: blue;"><%= c.user.username %></font>: <%= c.content %>
+			</div>
+			<br>
 		<% end %>
 	</div>
+	
 	<hr>
 	<%= form_tag comments_path do %>
 		<input type="hidden" name="comment[trade_id]" value="<%= @trade.id %>">

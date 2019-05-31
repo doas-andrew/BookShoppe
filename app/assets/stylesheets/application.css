@@ -136,8 +136,8 @@ a.large_btn {
 #chatbox input::placeholder {
 	text-align: center;
 }
-#delete_comment {
-	align-self: left;
+.delete_comment {
+	display: inline-block;
 	color: red;
 }
 /**************************************************/
