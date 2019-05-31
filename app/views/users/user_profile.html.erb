@@ -1,7 +1,7 @@
 <div class="view">
 	<div class="row">
-
 		<div id="user_card" class="col">
+
 			<h1 align="center"><%= @user.full_name %></h1>
 				<br>
 			<% if @user.avatar.url.nil? %>
@@ -10,17 +10,17 @@
 				<img id="avatar" src="<%= @user.avatar.url %>">
 			<% end %>
 
-			<% if @user == current_user %>
-				<div class="btn-group-vertical btn-group-lg" style="width:100%; "align="left">
-					<a href="<%= edit_user_path %>" class="btn btn-secondary">Edit Profile &nbsp <i class="pencil alternate icon"></i></a>
-					<%= link_to user_path, method: :delete, data: {confirm: "Are you sure you want to delete your profile?\nAll of your active trades will be canceled.\n\nThis can't be undone. "}, class: "btn btn-secondary" do %>Delete Profile &nbsp <i class="user times icon"></i><% end %>
-				</div>
-			<% end %>
-				<br><br>
 			<div align="center">
-				<% if @user == current_user %>
-					<a href="<%= new_book_path %>" class="btn blue_btn large_btn">Add a book to your collection <i class="book icon"></i></a>
-				<% elsif current_user && current_user.user_books.count > 0 && @user.inventory.count > 0  %>
+				<% if current_user == @user %>
+					<div class="btn-group-vertical btn-group-lg" style="width:100%;">
+						<a href="<%= edit_user_path %>" class="btn btn-secondary">Edit Profile &nbsp <i class="pencil alternate icon"></i></a>
+						<%= link_to user_path, method: :delete, data: {confirm: "Are you sure you want to delete your profile?\nAll of your active trades will be canceled.\n\nThis can't be undone. "}, class: "btn btn-secondary" do %>Delete Profile &nbsp <i class="user times icon"></i><% end %>
+					</div>
+					<br><br>
+						<a href="<%= new_book_path %>" class="btn blue_btn large_btn">Add a book to your collection <i class="book icon"></i></a>
+
+				<% elsif current_user && current_user.inventory.count > 0 && @user.inventory.count > 0 %>
+				<br><br>
 					<a href="<%= new_trade_path+"?id=#{@user.id}" %>" class="btn blue_btn large_btn">Propose a trade with this user <i class="book icon"></i></a>
 				<% end %>
 			</div>
@@ -44,5 +44,6 @@
 				</div>
 			</div>
 		</div>
+		
 	</div>
 </div>
